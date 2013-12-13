@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ "$1" = "?" ]
+	then
+		B1="\033[1m";
+		B2="\033[0m";
+		echo -e "";
+		echo -e "${B1}AUTHOR${B2}";
+		echo -e "  Nicholas Almeida";
+		echo -e "";
+		echo -e "${B1}INFO${B2} (release 2013-03-18)";
+		echo -e "  lists all \".\" (hidden) files using the current folder path as reference";
+		echo -e "";
+		echo -e "${B1}USAGE${B2}";
+		echo -e "  ls. [LS OPTIONS]";
+		echo -e "";
+		echo -e "${B1}EXAMPLES${B2}";
+		echo -e "  ls.";
+		echo -e "  ls. -delete   #remove all \".\" files";
+		echo -e "";
+		exit 1;
+fi
+
+find . -name '.??*' $1

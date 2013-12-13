@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Author Marcelo Miranda Carneiro -- mcarneiro@fbiz.com.br | mcarneiro@gmail.com
+
+URL='http://tecnologia.fbiz.com.br/mp-utils/loader/mp-modules'
+curl -s $URL | bash -s $@

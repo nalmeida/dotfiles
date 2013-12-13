@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo create-local-website $(pwd) $(pwd | awk -F '/' '{print $NF}')

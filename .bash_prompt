@@ -1,0 +1,6 @@
+# Terminal Alias
+export LSCOLORS=gxfxcxdxbxegedabagacad
+
+# OLD # PS1="\[\e[0;31m\]⚡\[\e[m\] \u \W $ "
+
+PS1='\[\e[0;31m\]⚡\[\e[m\] \[\033[01;34m\] \w\[\033[35m\]$(git-parse-branch) \[\033[01;30m\]$\[\033[00m\] '
