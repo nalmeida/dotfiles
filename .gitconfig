@@ -1,0 +1,7 @@
+[user]
+        name = Nicholas Almeida
+        email = fala@nicholasalmeida.com
+[credential]
+        helper = osxkeychain
+[color]
+        ui = true
