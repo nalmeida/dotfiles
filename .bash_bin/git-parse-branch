@@ -54,7 +54,7 @@ function git-parse-branch {
             branch="NO BRANCH"
         fi
 
-        echo " (${branch}${state}${remote})"
+        echo " ${branch}${state}${remote}"
     fi
     return
 }
