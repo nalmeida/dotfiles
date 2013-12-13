@@ -5,3 +5,6 @@
         helper = osxkeychain
 [color]
         ui = true
+[core]
+        # Use custom `.gitignore` and `.gitattributes`
+        excludesfile = ~/.gitignore
