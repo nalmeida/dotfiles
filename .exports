@@ -2,7 +2,7 @@
 export SVN_EDITOR=vim
 export PATH=/opt/subversion/bin:$PATH
 
-export PATH=~/.bash_bin:$PATH
+export PATH=bin:$PATH
 
 # MacPorts Installer addition on 2013-10-08_at_11:38:23: adding an appropriate PATH variable for use with MacPorts.
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
