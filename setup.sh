@@ -43,7 +43,7 @@ backup() {
 			if [ -f $i ] || [ -d $i ]; then
 					if [ "$DO_BACKUP" = "no" ]; then
 						DO_BACKUP="yes"
-						msg_log "Creading backup folder: $FOLDER_NAME"
+						msg_arrow "Creading backup folder: $FOLDER_NAME"
 						mkdir $FOLDER_NAME
 						msg_log "Backing up dotfiles"
 					fi
@@ -54,18 +54,18 @@ backup() {
 
 	done
 	if [ "$DO_BACKUP" = "yes" ]; then
-	msg_success "Backup complete!"
+		msg_success "Backup complete!"
 	fi
 }
 
 download() {
-	msg_log "Downloading files from Github"
+	msg_arrow "Downloading files from Github"
 	curl -#L https://github.com/nalmeida/dotfiles/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,sample.png,setup.sh,Tomorrow-Night.terminal}
 	msg_success "Download and extraction complete"
 }
 
 permissions() {
-	msg_log "Setting permisions"
+	msg_arrow "Setting permisions"
 
 	msg_log " setting executable permission to .bash_profile"
 	chmod +x .bash_profile
