@@ -77,7 +77,7 @@ backup() {
 
 download() {
 	msg_arrow "Downloading files from Github"
-	curl -#L https://github.com/nalmeida/dotfiles/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,sample.png,setup.sh,Tomorrow-Night.terminal}
+	cd; curl -#L https://github.com/nalmeida/dotfiles/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,sample.png,setup.sh,Tomorrow-Night.terminal}
 	msg_success "Download and extraction complete"
 }
 
@@ -121,5 +121,4 @@ main() {
 	banner
 	confirm
 }
-
 main
