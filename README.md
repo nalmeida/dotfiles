@@ -1,4 +1,4 @@
-# Nicholas personal collection of .dotfiles
+# Personal collection of .dotfiles
 
 ## Installing
 
