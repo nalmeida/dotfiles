@@ -29,6 +29,9 @@ ask-git-info() {
 }
 
 doIt() {
+
+	cd ~
+
 	ask-git-info
 	backup
 	download
@@ -74,7 +77,7 @@ backup() {
 
 download() {
 	msg_arrow "Downloading files from Github"
-	cd; curl -#L https://github.com/nalmeida/dotfiles/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,sample.png,setup.sh,Tomorrow-Night.terminal}
+	curl -#L https://github.com/nalmeida/dotfiles/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,sample.png,setup.sh,Tomorrow-Night.terminal}
 	msg_success "Download and extraction complete"
 }
 
