@@ -41,6 +41,9 @@ doIt() {
 
 banner() {
 	# @see http://patorjk.com/software/taag/#p=display&f=Small%20Slant&t=dotfiles%0A
+
+	clear
+
 	echo "      __     __  ____ __      "
 	echo "  ___/ /__  / /_/ _(_) /__ ___"
 	echo " / _  / _ \/ __/ _/ / / -_|_-<"
