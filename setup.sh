@@ -19,11 +19,22 @@ confirm() {
 	fi
 }
 
+ask-git-info() {
+	msg_arrow "Provide your git info:"
+	echo -n " [?] What is your git author \"name\"? "
+	read GITNAME
+
+	echo -n " [?] What is your git author \"e-mail\"? "
+	read GITEMAIL
+}
+
 doIt() {
+	ask-git-info
 	backup
 	download
 	permissions
 	restore
+	write-git-info
 
 	msg_success "Done"
 }
@@ -81,6 +92,24 @@ permissions() {
 restore() {
 	test -f "$FOLDER_NAME/.extras" && msg_log "Restoring .extras file" && cp "$FOLDER_NAME/.extras" ".extras" && msg_success ".extras restored"
 }
+
+generate-gitconfig(){
+	IFS=''
+	while read -r line ; do
+		line=${line//\"/\\\"}
+		line=${line//\`/\\\`}
+		line=${line//\$/\\\$}
+		line=${line//\\\${/\${}
+		eval "echo \"$line\"";
+	done < ${1}
+}
+
+write-git-info() {
+	generate-gitconfig .gitconfig.template > .gitconfig
+	rm .gitconfig.template
+	msg_success ".gitconfig Ok"
+}
+
 
 main() {
 	banner

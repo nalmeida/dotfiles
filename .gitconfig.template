@@ -1,6 +1,6 @@
 [user]
-        name = 
-        email = 
+        name = ${GITNAME}
+        email = ${GITEMAIL}
 [credential]
         helper = osxkeychain
 [color]
