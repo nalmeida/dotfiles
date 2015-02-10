@@ -60,7 +60,7 @@ function git-parse-branch {
         fi
 
 
-        echo " ${branch}${state}${remote} "
+        echo " ${branch}${state}${remote}"
     else
         echo""
     fi
