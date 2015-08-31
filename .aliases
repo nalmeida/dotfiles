@@ -8,6 +8,3 @@ alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 
 # programs
 alias sbl='open -a "Sublime Text 2"'
-
-# Tail
-alias tail-flash="tail -f ~/Library/Preferences/Macromedia/Flash\ Player/Logs/flashlog.txt"
