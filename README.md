@@ -1,6 +1,6 @@
 # Personal collection of .dotfiles
 
-# In order to setup your applications first, follow this instructions: https://gist.github.com/nalmeida/65a778ce5f9b5669ec5f
+> In order to setup your applications first, follow this instructions: https://gist.github.com/nalmeida/65a778ce5f9b5669ec5f
 
 ## Installing
 
