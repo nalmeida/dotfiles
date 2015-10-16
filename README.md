@@ -1,5 +1,7 @@
 # Personal collection of .dotfiles
 
+# In order to setup your applications first, follow this instructions: https://gist.github.com/nalmeida/65a778ce5f9b5669ec5f
+
 ## Installing
 
 Don't worry, before installing it will backup your files into a ```~/dotfiles-backup-DATE```:
