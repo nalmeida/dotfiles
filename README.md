@@ -71,7 +71,14 @@ Run the following command in your Terminal (Will prompt for admin password):
 
 https://gist.github.com/jexchan/2351996
 
-## Sample image
+## Sample images after config
 
-![Sample](https://raw.github.com/nalmeida/dotfiles/master/sample.png)
+![Terminal](https://raw.github.com/nalmeida/dotfiles/master/sample.png)
+![Keyboard](https://raw.github.com/nalmeida/dotfiles/master/keyboard.png)
+![Mouse 1](https://raw.github.com/nalmeida/dotfiles/master/mouse-1.png)
+![Mouse 2](https://raw.github.com/nalmeida/dotfiles/master/mouse-2.png)
+![Trackpad 1](https://raw.github.com/nalmeida/dotfiles/master/trackpad-1.png)
+![Trackpad 2](https://raw.github.com/nalmeida/dotfiles/master/trackpad-2.png)
+![Trackpad 3](https://raw.github.com/nalmeida/dotfiles/master/trackpad-3.png)
+
 
