@@ -32,15 +32,11 @@
 And run the installer again
 
 ##### Permission error while installing "gem install bundler"
-1. Install RVM: 
-	$ curl -sSL https://get.rvm.io | bash -s stable --ruby
+1. Install RVM: `$ curl -sSL https://get.rvm.io | bash -s stable --ruby`
 2. Quit Terminal and open it again
-3. Find the latest ruby gem
-	$ cd ./rvm/gems
-4. Set the default ruby version to the latest
-	$ rvm use ruby-X.Y.Z
-5. Run bundler again
-	$ gem install bundler
+3. Find the latest ruby gem `$ cd ./rvm/gems`
+4. Set the default ruby version to the latest `$ rvm use ruby-X.Y.Z`
+5. Run bundler again `$ gem install bundler`
 
 ## 2) Setting-up Terminal 
 
