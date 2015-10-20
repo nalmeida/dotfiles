@@ -71,6 +71,11 @@ Run the following command in your Terminal (it will prompt for admin password):
 
 https://gist.github.com/jexchan/2351996
 
+##6) Sublime Text 
+
+1. Install Package Control: https://packagecontrol.io/installation
+2. Install "Material Theme": https://github.com/equinusocio/material-theme
+
 ## Sample images after config
 
 ![Terminal](https://raw.github.com/nalmeida/dotfiles/master/sample.png)
