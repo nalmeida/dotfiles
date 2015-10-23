@@ -71,10 +71,15 @@ Run the following command in your Terminal (it will prompt for admin password):
 
 https://gist.github.com/jexchan/2351996
 
-##6) Sublime Text 
+## 6) Sublime Text 
 
 1. Install Package Control: https://packagecontrol.io/installation
 2. Install "Material Theme": https://github.com/equinusocio/material-theme
+
+## 7) Printer: change to 1 side print as default
+
+1. Open the following address in your browser: http://127.0.0.1:631/printers_
+2. Follow the instructions: https://www.youtube.com/watch?v=U9ABkxnicEs
 
 ## Sample images after config
 

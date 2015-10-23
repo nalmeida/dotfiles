@@ -24,6 +24,10 @@ sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.serve
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
 
+# Allow printer web Interface (in order to change 2 sides printer starndard)
+# More information: https://lapserv.maths.cam.ac.uk/docs/osxprint108.html
+sudo cupsctl WebInterface=yes
+
 # Disable transparency in the menu bar and elsewhere on Yosemite
 defaults write com.apple.universalaccess reduceTransparency -bool true
 
