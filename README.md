@@ -81,6 +81,15 @@ https://gist.github.com/jexchan/2351996
 1. Open the following address in your browser: http://127.0.0.1:631/printers_
 2. Follow the instructions: https://www.youtube.com/watch?v=U9ABkxnicEs
 
+## 8) Enable writing in external NTFS HD 
+
+Full tutorial: http://learnaholic.me/2013/11/11/enable-ntfs-write-on-mac-os-x-mavericks/
+
+1) Create a file: `$ sudo vim /etc/fstab`
+2) Add your HD in the list inside the file: `LABEL=#DEVICE-NAME#  none    ntfs    rw,auto,nobrowse`
+3) Create a link from `/Volumes` in your desktop: `sudo ln -s /Volumes ~/Desktop/Volumes`
+4) Eject the HD and connect it again. It will be listed inside your `/Volumes` folder.
+
 ## Sample images after config
 
 ![Terminal](https://raw.github.com/nalmeida/dotfiles/master/sample.png)
