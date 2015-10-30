@@ -67,21 +67,25 @@ Run the following command in your Terminal (it will prompt for admin password):
 2. Double click it;
 3. Set it as your default theme.
 
-## 5) Setting multiple SSH Keys for git
+## 5) Create subl alias for Sublime Text
+
+`ln -s "/opt/homebrew-cask/Caskroom/sublime-text3/Build\ 3083/Sublime\ Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl`
+
+## 6) Setting multiple SSH Keys for git
 
 https://gist.github.com/jexchan/2351996
 
-## 6) Sublime Text 
+## 7) Sublime Text 
 
 1. Install Package Control: https://packagecontrol.io/installation
 2. Install "Material Theme": https://github.com/equinusocio/material-theme
 
-## 7) Printer: change to 1 side print as default
+## 8) Printer: change to 1 side print as default
 
 1. Open the following address in your browser: http://127.0.0.1:631/printers_
 2. Follow the instructions: https://www.youtube.com/watch?v=U9ABkxnicEs
 
-## 8) Enable writing in external NTFS HD 
+## 9) Enable writing in external NTFS HD 
 
 Full tutorial: http://learnaholic.me/2013/11/11/enable-ntfs-write-on-mac-os-x-mavericks/
 
