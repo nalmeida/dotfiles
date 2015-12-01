@@ -95,6 +95,12 @@ Full tutorial: http://learnaholic.me/2013/11/11/enable-ntfs-write-on-mac-os-x-ma
 3. Create a link from `/Volumes` in your desktop: `sudo ln -s /Volumes ~/Desktop/Volumes`
 4. Eject the HD and connect it again. It will be listed inside your `/Volumes` folder.
 
+## 10) Add multiple `ssh` identities
+
+Instructions: https://gist.github.com/jexchan/2351996
+
+Then run `$ ssh-add -K ~/.ssh/privateKey.txt`. It'll prompt for your passphrase if necessary, then add it to your Keychain.
+
 ## Sample images after config
 
 ![Terminal](https://raw.github.com/nalmeida/dotfiles/master/sample.png)
