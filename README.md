@@ -17,7 +17,7 @@
 1. `$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 2. `$ brew install git caskroom/cask/brew-cask nodejs wget`
 3. `$ brew tap caskroom/versions`
-4. `$ brew cask install atext firefox day-o filezilla sublime-text3 google-chrome virtualbox vagrant spectacle dropbox vlc skype telegram spotify java pngyu franz imageoptim`
+4. `$ brew cask install the-unarchiver atext firefox day-o filezilla sublime-text3 google-chrome virtualbox vagrant spectacle dropbox vlc skype telegram spotify java pngyu franz imageoptim`
 4. `$ npm install -g grunt-cli bower ngrok &&`
 6. `$ gem install bundler`
 
