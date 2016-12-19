@@ -11,6 +11,7 @@
 3. Sonicwall mobile connect (VPN)
 4. Evernote
 5. [Monosnap](http://monosnap.com/welcome)
+6. [Smartmochups](https://app.smartmockups.com)
 
 ### Install Apps via `brew cask`
 
