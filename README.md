@@ -73,21 +73,17 @@ Run the following command in your Terminal (it will prompt for admin password):
 
 `ln -s "/opt/homebrew-cask/Caskroom/sublime-text3/Build\ 3083/Sublime\ Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl`
 
-## 6) Setting multiple SSH Keys for git
-
-https://gist.github.com/jexchan/2351996
-
-## 7) Sublime Text 
+## 6) Sublime Text 
 
 1. Install Package Control: https://packagecontrol.io/installation
 2. Install "Material Theme": https://github.com/equinusocio/material-theme
 
-## 8) Printer: change to 1 side print as default
+## 7) Printer: change to 1 side print as default
 
 1. Open the following address in your browser: http://127.0.0.1:631/printers_
 2. Follow the instructions: https://www.youtube.com/watch?v=U9ABkxnicEs
 
-## 9) Enable writing in external NTFS HD 
+## 8) Enable writing in external NTFS HD 
 
 Full tutorial: http://learnaholic.me/2013/11/11/enable-ntfs-write-on-mac-os-x-mavericks/
 
@@ -96,7 +92,7 @@ Full tutorial: http://learnaholic.me/2013/11/11/enable-ntfs-write-on-mac-os-x-ma
 3. Create a link from `/Volumes` in your desktop: `sudo ln -s /Volumes ~/Desktop/Volumes`
 4. Eject the HD and connect it again. It will be listed inside your `/Volumes` folder.
 
-## 10) Add multiple `ssh` identities
+## 9) Add multiple `ssh` identities
 
 Instructions: https://gist.github.com/jexchan/2351996
 
