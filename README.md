@@ -60,13 +60,13 @@ Don't worry, before installing it will backup your files into a `~/dotfiles-back
 
 Run the following command in your Terminal:
 
-    $ cd; curl -o setup.sh https://raw.github.com/nalmeida/dotfiles/master/setup.sh && bash setup.sh && rm setup.sh
+    $ cd; curl -o setup.sh https://raw.githubusercontent.com/nalmeida/dotfiles/master/setup.sh && bash setup.sh && rm setup.sh
 
 ## 3) Configuring OSX preferences
 
 Run the following command in your Terminal (it will prompt for admin password):
 
-    $ cd; curl -o mac-config.sh https://raw.github.com/nalmeida/dotfiles/master/mac-config.sh && bash mac-config.sh && rm mac-config.sh
+    $ cd; curl -o mac-config.sh https://raw.githubusercontent.com/nalmeida/dotfiles/master/mac-config.sh && bash mac-config.sh && rm mac-config.sh
 
 
 ## 4) Installing the Tomorrow Night terminal theme
