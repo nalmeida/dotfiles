@@ -6,7 +6,7 @@
 
 ### Manual install the following software manually via App Store
 
-1. Xcode
+1. Xcode (and Open it!)
 2. Microsoft remote desktop
 3. Sonicwall mobile connect (VPN)
 4. Evernote
