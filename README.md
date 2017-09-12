@@ -29,6 +29,12 @@
 
 #### Troubleshooting
 
+##### Old Terminal hostname
+
+In case your brand new computer is not so brand new, you may want to [change its Terminal hostname](https://apple.stackexchange.com/questions/66611/how-to-change-computer-name-so-terminal-displays-it-in-mac-os-x-mountain-lion):
+
+	$ sudo scutil --set HostName nalmeida
+
 ##### Error while installing some app via cask
 	$ brew tap caskroom/versions
 And run the installer again
