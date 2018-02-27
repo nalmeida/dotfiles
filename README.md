@@ -18,7 +18,7 @@
 1. `$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 2. `$ brew install git caskroom/cask/brew-cask nodejs wget`
 3. `$ brew tap caskroom/versions`
-4. `$ brew cask install the-unarchiver atext firefox day-o filezilla transmission sublime-text3 google-chrome virtualbox vagrant spectacle dropbox vlc skype telegram spotify java pngyu imageoptim`
+4. `$ brew cask install the-unarchiver atext firefox day-o filezilla sublime-text google-chrome spectacle dropbox vlc skype telegram spotify java pngyu imageoptim`
 4. `$ npm install -g grunt-cli bower ngrok &&`
 6. `$ gem install bundler`
 
@@ -77,7 +77,7 @@ Run the following command in your Terminal (it will prompt for admin password):
 
 ## 5) Create subl alias for Sublime Text
 
-`ln -s "/opt/homebrew-cask/Caskroom/sublime-text3/Build\ 3083/Sublime\ Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl`
+`ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl`
 
 ## 6) Sublime Text 
 
