@@ -82,7 +82,7 @@ Run the following command in your Terminal (it will prompt for admin password):
 ## 6) Sublime Text 
 
 1. Install Package Control: https://packagecontrol.io/installation
-2. Install "Material Theme": https://github.com/equinusocio/material-theme
+2. Install "Cobalt 2 by Wesbos": https://github.com/wesbos/cobalt2
 
 ## 7) Printer: change to 1 side print as default
 
