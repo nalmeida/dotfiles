@@ -104,6 +104,16 @@ Instructions: https://gist.github.com/jexchan/2351996
 
 Then run `$ ssh-add -K ~/.ssh/privateKey.txt`. It'll prompt for your passphrase if necessary, then add it to your Keychain.
 
+## 9) Config aText Sync and Backup
+
+1. Open Dropbox and sync the `~/Dropbox/System` folder
+2. Open aText, register and register it
+3. Go to aText Preferences
+4. In Sync options, choose the `~/Dropbox/System` folder
+5. Sync using the first option (Keep data on system; discard local data)
+6. In Backup options, choose the `~/Dropbox/System/aText/Backup` folder
+
+
 ## Sample images after config
 
 ![Terminal](https://raw.github.com/nalmeida/dotfiles/master/sample.png)
