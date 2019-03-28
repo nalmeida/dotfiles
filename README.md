@@ -46,7 +46,7 @@ And run the installer again
 4. Set the default ruby version to the latest `$ rvm use ruby-X.Y.Z`
 5. Run bundler again `$ gem install bundler`
 
-## 2) Setting-up Terminal 
+## 2) Setting-up Terminal
 
 Don't worry, before installing it will backup your files into a `~/dotfiles-backup-DATE`:
  * `.aliases`
@@ -71,15 +71,16 @@ Run the following command in your Terminal (it will prompt for admin password):
 
 ## 4) Installing the Tomorrow Night terminal theme
 
-1. [Download the `Tomorrow-Night.terminal` file](https://raw.github.com/nalmeida/dotfiles/master/Tomorrow-Night.terminal);
-2. Double click it;
-3. Set it as your default theme.
+1. [Install the `Operator Mono` font](https://www.dropbox.com/preview/_Trabalho/Sources/Fontes/operator-mono-cufonfonts.zip)
+2. [Download the `Dark.terminal` file](https://raw.github.com/nalmeida/dotfiles/master/Dark.terminal);
+3. Double click it;
+4. Set it as your default theme.
 
 ## 5) Create subl alias for Sublime Text
 
 `ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl`
 
-## 6) Sublime Text 
+## 6) Sublime Text
 
 1. Install Package Control: https://packagecontrol.io/installation
 2. Install "Cobalt 2 by Wesbos": https://github.com/wesbos/cobalt2
@@ -89,7 +90,7 @@ Run the following command in your Terminal (it will prompt for admin password):
 1. Open the following address in your browser: http://127.0.0.1:631/printers_
 2. Follow the instructions: https://www.youtube.com/watch?v=U9ABkxnicEs
 
-## 8) Enable writing in external NTFS HD 
+## 8) Enable writing in external NTFS HD
 
 Full tutorial: http://learnaholic.me/2013/11/11/enable-ntfs-write-on-mac-os-x-mavericks/
 
