@@ -1,4 +1,5 @@
-alias ls="ls -G"
+alias ls="ls -GFh"
+
 alias bash_profile="vim ~/.bash_profile"
 alias tree="find . -print | sed -e 's;[^/]*/;|-- ;g;s;--|; |;g'"
 
