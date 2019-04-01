@@ -76,21 +76,17 @@ Run the following command in your Terminal (it will prompt for admin password):
 3. Double click it;
 4. Set it as your default theme.
 
-## 5) Create subl alias for Sublime Text
+## 5) VS Code
 
-`ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl`
+1. Install "Settings Sync": https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync
+2. Sync it with the Gist: https://gist.github.com/nalmeida/ede8d0ab4ddf16f0c1f6b3f253ac1e44 using the personal token from: https://github.com/settings/tokens/275741672
 
-## 6) Sublime Text
-
-1. Install Package Control: https://packagecontrol.io/installation
-2. Install "Cobalt 2 by Wesbos": https://github.com/wesbos/cobalt2
-
-## 7) Printer: change to 1 side print as default
+## 6) Printer: change to 1 side print as default
 
 1. Open the following address in your browser: http://127.0.0.1:631/printers_
 2. Follow the instructions: https://www.youtube.com/watch?v=U9ABkxnicEs
 
-## 8) Enable writing in external NTFS HD
+## 7) Enable writing in external NTFS HD
 
 Full tutorial: http://learnaholic.me/2013/11/11/enable-ntfs-write-on-mac-os-x-mavericks/
 
@@ -99,7 +95,7 @@ Full tutorial: http://learnaholic.me/2013/11/11/enable-ntfs-write-on-mac-os-x-ma
 3. Create a link from `/Volumes` in your desktop: `sudo ln -s /Volumes ~/Desktop/Volumes`
 4. Eject the HD and connect it again. It will be listed inside your `/Volumes` folder.
 
-## 9) Add multiple `ssh` identities
+## 8) Add multiple `ssh` identities
 
 Instructions: https://gist.github.com/jexchan/2351996
 
