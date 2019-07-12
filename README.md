@@ -110,6 +110,15 @@ Then run `$ ssh-add -K ~/.ssh/privateKey.txt`. It'll prompt for your passphrase 
 5. Sync using the first option (Keep data on system; discard local data)
 6. In Backup options, choose the `~/Dropbox/System/aText/Backup` folder
 
+## 10) Upgrading python to python3+
+
+1. Install it from [Anaconda Python](https://www.anaconda.com/distribution/)
+2. Disable the ```(base)``` text from your Terminal prompt with the following command ([source](https://askubuntu.com/questions/1026383/why-does-base-appear-in-front-of-my-terminal-prompt)):
+
+```
+conda config --set changeps1 False
+```
+
 
 ## Sample images after config
 
