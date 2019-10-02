@@ -20,16 +20,13 @@ alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 # programs
 alias sbl='open -a "Sublime Text"'
 
-# Include Drush bash customizations.
-if [ -f "/Users/nicalmei/.drush/drush.bashrc" ] ; then
-  source /Users/nicalmei/.drush/drush.bashrc
-fi
+# docker
+alias dinit='docker-compose up --build'
+alias ddown='docker-compose down'
+alias dstart='docker-compose start'
+alias dstop='docker-compose stop'
+alias dlist='docker ps -a'
 
-# Include Drush prompt customizations.
-if [ -f "/Users/nicalmei/.drush/drush.prompt.sh" ] ; then
-  source /Users/nicalmei/.drush/drush.prompt.sh
-fi
-
-# Path to Drush, added by 'drush init'.
-export PATH="$PATH:$HOME/Work/contenta-install/vendor/bin"
+# Bash into running container
+dbash() { docker exec -it $1 /bin/bash; }
 
