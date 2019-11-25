@@ -18,7 +18,7 @@
 1. `$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 2. `$ brew install git caskroom/cask/brew-cask nodejs wget`
 3. `$ brew tap caskroom/versions`
-4. `$ brew cask install the-unarchiver atext firefox day-o filezilla sublime-text google-chrome spectacle dropbox vlc skype telegram spotify java pngyu imageoptim virtualbox vagrant vagrant-manager`
+4. `$ brew cask install the-unarchiver atext firefox day-o filezilla sublime-text google-chrome spectacle dropbox vlc skype telegram spotify java pngyu imageoptim virtualbox vagrant vagrant-manager httpstat`
 4. `$ npm install -g grunt-cli bower ngrok &&`
 6. `$ gem install bundler`
 
@@ -109,6 +109,15 @@ Then run `$ ssh-add -K ~/.ssh/privateKey.txt`. It'll prompt for your passphrase 
 4. In Sync options, choose the `~/Dropbox/System` folder
 5. Sync using the first option (Keep data on system; discard local data)
 6. In Backup options, choose the `~/Dropbox/System/aText/Backup` folder
+
+## 10) Upgrading python to python3+
+
+1. Install it from [Anaconda Python](https://www.anaconda.com/distribution/)
+2. Disable the ```(base)``` text from your Terminal prompt with the following command ([source](https://askubuntu.com/questions/1026383/why-does-base-appear-in-front-of-my-terminal-prompt)):
+
+```
+conda config --set changeps1 False
+```
 
 
 ## Sample images after config
