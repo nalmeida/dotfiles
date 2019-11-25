@@ -13,6 +13,26 @@ PS1='\[\e[0;31m\]⚡\[\e[m\]\[\033[01;34m\] \w\[\033[35m\]$(git-parse-branch) \[
 alias ls="ls -GFh"
 alias tree="find . -print | sed -e 's;[^/]*/;|-- ;g;s;--|; |;g'"
 
+# Push code to multiple git remote repos
+# @see: https://stackoverflow.com/questions/14290113/git-pushing-code-to-two-remotes
+# How to:
+# 1. git remote add github https://github.com/nalmeida/ ...
+# 2. git config -l
+function pushall() {
+	if [ -z "$1" ]; then
+		printf "⚠️  ERROR: You must provide the remote branch name.\n\tE.g.: pushall master\n"
+	else
+		{
+			git push origin "$1" && git push github "$1";
+		} || {
+			printf "⚠️  ERROR: There is no \"github\" remote."
+			printf "\n\t To check:  git config -l"
+			printf "\n\t To add:    git remote add github https://github.com/nalmeida/ ..."
+			printf "\n"
+		}
+	fi
+}
+
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
