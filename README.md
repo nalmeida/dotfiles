@@ -71,7 +71,7 @@ Run the following command in your Terminal (it will prompt for admin password):
 
 ## 4) Installing the Tomorrow Night terminal theme
 
-1. [Install the `Operator Mono` font](https://www.dropbox.com/preview/_Trabalho/Sources/Fontes/operator-mono-cufonfonts.zip)
+1. Install [`Operator Mono`](https://www.dropbox.com/preview/_Trabalho/Sources/Fontes/operator-mono-cufonfonts.zip) font or [`JetBraiins Mono`](https://www.jetbrains.com/lp/mono/) font;
 2. [Download the `Dark.terminal` file](https://raw.github.com/nalmeida/dotfiles/master/Dark.terminal);
 3. Double click it;
 4. Set it as your default theme.
