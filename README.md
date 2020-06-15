@@ -12,6 +12,7 @@
 4. Evernote
 5. [Monosnap](http://monosnap.com/welcome)
 6. [Smartmockups](https://app.smartmockups.com)
+7. [Pliim](https://pliim.app/opensource)
 
 ### Install Apps via `brew cask`
 
