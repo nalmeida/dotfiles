@@ -1,52 +1,21 @@
 export PATH=~/bin:$PATH
 
-# MacPorts Installer addition on 2013-10-08_at_11:38:23: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
-
 # Terminal Alias
 export LSCOLORS=gxfxcxdxbxegedabagacad
+
+# Espanso default editor
+export EDITOR=/usr/local/bin/code
 
 source ~/bin/git-parse-branch
 PS1='\[\e[0;31m\]⚡\[\e[m\]\[\033[01;34m\] \w\[\033[35m\]$(git-parse-branch) \[\033[01;30m\]$\[\033[00m\] '
 
 alias ls="ls -GFh"
-alias tree="find . -print | sed -e 's;[^/]*/;|-- ;g;s;--|; |;g'"
+alias rm=trash "$@"
 
-# Push code to multiple git remote repos
-# @see: https://stackoverflow.com/questions/14290113/git-pushing-code-to-two-remotes
-# How to:
-# 1. git remote add github https://github.com/nalmeida/ ...
-# 2. git config -l
-function pushall() {
-	if [ -z "$1" ]; then
-		printf "⚠️  ERROR: You must provide the remote branch name.\n\tE.g.: pushall master\n"
-	else
-		{
-			git push origin "$1" && git push github "$1";
-		} || {
-			printf "⚠️  ERROR: There is no \"github\" remote."
-			printf "\n\t To check:  git config -l"
-			printf "\n\t To add:    git remote add github https://github.com/nalmeida/ ..."
-			printf "\n"
-		}
-	fi
-}
+# Python 2.7 
+alias pip=~/Library/Python/2.7/bin/pip 
 
-# IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
-
-# programs
-alias sbl='open -a "Sublime Text"'
-
-# docker
-alias dinit='docker-compose up --build'
-alias ddown='docker-compose down'
-alias dstart='docker-compose start'
-alias dstop='docker-compose stop'
-alias dlist='docker ps -a'
-
-# Bash into running container
-dbash() { docker exec -it $1 /bin/bash; }
-
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
