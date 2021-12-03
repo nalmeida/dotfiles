@@ -7,7 +7,7 @@
 ### Homebrew: 
 
 ```
-$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
 ### Install Git / github
@@ -17,7 +17,7 @@ Video Help (https://www.youtube.com/watch?v=_RsP81Et12s)
 1) Install the latest git version
 
 ```
-  $ brew install git
+brew install git
 ```
 
 Restart terminal
