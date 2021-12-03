@@ -1,4 +1,4 @@
-export PATH=~/bin:$PATH
+export PATH=~/github.com/nalmeida/dotfiles/bin:$PATH
 
 # Terminal Alias
 export LSCOLORS=gxfxcxdxbxegedabagacad
@@ -6,7 +6,7 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 # Espanso default editor
 export EDITOR=/usr/local/bin/code
 
-source ~/bin/git-parse-branch
+source ~/github.com/nalmeida/dotfiles/bin/git-parse-branch
 PS1='\[\e[0;31m\]⚡\[\e[m\]\[\033[01;34m\] \w\[\033[35m\]$(git-parse-branch) \[\033[01;30m\]$\[\033[00m\] '
 
 alias ls="ls -GFh"
