@@ -136,3 +136,7 @@ Set duplicate line shortcut: `Code > Preferences > Keyboard Shortcuts`:
 ![Trackpad 3](https://raw.github.com/nalmeida/dotfiles/master/trackpad-3.png)
 
 
+## Related Links
+
+* [Jason Lengstorf’s Dotfiles](https://github.com/jlengstorf/dotfiles)
+* [CJ from Coding Garden](https://github.com/CodingGarden/vscode-settings)
