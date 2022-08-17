@@ -36,6 +36,7 @@ brew install --cask obsidian
 brew install --cask spectacle
 brew install --cask itsycal
 brew install --cask authy
+brew install --cask there
 ```
 
 ### Espanso
