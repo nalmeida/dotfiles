@@ -13,7 +13,7 @@ alias ls="ls -GFh"
 alias rm=trash "$@"
 
 # List all the files with numerical chmod permissions
-alias la="ls -la | awk '{k=0;for(i=0;i<=8;i++)k+=((substr(\$1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(\"%0o \",k);print}'"
+alias la="ls -laGFh | awk '{k=0;for(i=0;i<=8;i++)k+=((substr(\$1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(\"%0o \",k);print}'"
 
 # Python 2.7 
 alias pip=~/Library/Python/2.7/bin/pip 
