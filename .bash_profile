@@ -12,6 +12,9 @@ PS1='\[\e[0;31m\]⚡\[\e[m\]\[\033[01;34m\] \w\[\033[35m\]$(git-parse-branch) \[
 alias ls="ls -GFh"
 alias rm=trash "$@"
 
+# List all the files with numerical chmod permissions
+alias la="ls -la | awk '{k=0;for(i=0;i<=8;i++)k+=((substr(\$1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(\"%0o \",k);print}'"
+
 # Python 2.7 
 alias pip=~/Library/Python/2.7/bin/pip 
 
