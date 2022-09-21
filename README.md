@@ -68,29 +68,25 @@ npm install -g gitignore lite-server
 Once installed, launch it and customize the settings / preferences to your liking. These are my preferred settings:
 
 * Appearance
-	* Theme
-		* Minimal
+  * Theme
+    * Minimal
 * Profiles
-	* Default
-			* General -> Working Directory -> Reuse previous session's directory
-			* Colors -> Color Presets -> Dracula ([Download the theme in advance here](https://draculatheme.com/iterm))
-			* Colors -> Cursor Color -> #FFFF00
-			* Text -> Font -> Monolisa
-					* Private download [here](https://www.dropbox.com/s/op6nov5djmmmvej/MonoLisa%20Font.zip?dl=0).
-			* Text -> Font Size -> 18
-			* Window -> Settings for New Windows -> Columns: 120 / Rows: 30
-			* Keys -> Key Mappings -> Presets -> Natural Text Editing
-					* This allows me to use the [keyboard shortcuts](https://gist.github.com/w3cj/022081eda22081b82c52) I know and love inside of iTerm2
+  * Default
+      * General -> Working Directory -> Reuse previous session's directory
+      * Colors -> Color Presets -> Dracula ([Download the theme in advance here](https://draculatheme.com/iterm))
+      * Colors -> Cursor Color -> #FFFF00
+      * Text -> Font -> Monolisa
+          * Private download [here](https://www.dropbox.com/s/op6nov5djmmmvej/MonoLisa%20Font.zip?dl=0).
+      * Text -> Font Size -> 18
+      * Window -> Settings for New Windows -> Columns: 120 / Rows: 30
+      * Keys -> Key Mappings -> Presets -> Natural Text Editing
+          * This allows me to use the [keyboard shortcuts](https://gist.github.com/w3cj/022081eda22081b82c52) I know and love inside of iTerm2
 
 ## Bash and bash_profile
 
 ### Shell
 
 Mac now comes with `zsh` as the default [shell](https://en.wikipedia.org/wiki/Comparison_of_command_shells). `bash` is my preferred shell.
-
-I prefer bash because every remote linux machine I log into uses bash. Also, most shell scripts you come across (`.sh` files) are meant to be run on `sh` (Bourne shell) or `bash` (Bourne again shell). These files _might_ run on `zsh`, but there might be some compatibility issues.
-
-If you are a beginner, you probably don't need to replace your shell with `bash`. If you're going to stick with `zsh`, checkout [Oh My Zsh](https://ohmyz.sh/) which gives you a bunch of customizations out of the box.
 
 #### Install Bash and set it as the default
 
