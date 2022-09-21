@@ -37,6 +37,8 @@ brew install --cask spectacle
 brew install --cask itsycal
 brew install --cask authy
 brew install --cask there
+brew install --cask iterm2
+brew install --cask raycast
 ```
 
 ### Espanso
@@ -61,7 +63,82 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 npm install -g gitignore lite-server
 ```
 
+## iTerm2 (better than Terminal)
+
+Once installed, launch it and customize the settings / preferences to your liking. These are my preferred settings:
+
+* Appearance
+	* Theme
+		* Minimal
+* Profiles
+	* Default
+			* General -> Working Directory -> Reuse previous session's directory
+			* Colors -> Color Presets -> Dracula ([Download the theme in advance here](https://draculatheme.com/iterm))
+			* Colors -> Cursor Color -> #FFFF00
+			* Text -> Font -> Monolisa
+					* Private download [here](https://www.dropbox.com/s/op6nov5djmmmvej/MonoLisa%20Font.zip?dl=0).
+			* Text -> Font Size -> 18
+			* Window -> Settings for New Windows -> Columns: 120 / Rows: 30
+			* Keys -> Key Mappings -> Presets -> Natural Text Editing
+					* This allows me to use the [keyboard shortcuts](https://gist.github.com/w3cj/022081eda22081b82c52) I know and love inside of iTerm2
+
 ## Bash and bash_profile
+
+### Shell
+
+Mac now comes with `zsh` as the default [shell](https://en.wikipedia.org/wiki/Comparison_of_command_shells). `bash` is my preferred shell.
+
+I prefer bash because every remote linux machine I log into uses bash. Also, most shell scripts you come across (`.sh` files) are meant to be run on `sh` (Bourne shell) or `bash` (Bourne again shell). These files _might_ run on `zsh`, but there might be some compatibility issues.
+
+If you are a beginner, you probably don't need to replace your shell with `bash`. If you're going to stick with `zsh`, checkout [Oh My Zsh](https://ohmyz.sh/) which gives you a bunch of customizations out of the box.
+
+#### Install Bash and set it as the default
+
+To see what shell is currently your default, run:
+
+```sh
+echo $SHELL
+```
+
+To install the latest version of bash:
+
+```sh
+brew install --cask bash
+```
+
+Then, determine where bash got installed:
+
+```sh
+which bash
+```
+
+This will likely print `/usr/local/bin/bash`.
+
+We now need to add this to our `/etc/shells` file so we can set it as our default shell.
+
+Open up the `/etc/shells` file in `vim` (a command line text editor) with super user privileges (you will need to type your password after running this command):
+
+```sh
+sudo vim /etc/shells
+```
+
+This will launch a command line editor. Add `/usr/local/bin/bash` on the top of the list of shells.
+
+Press `ESQ+:wq!` to close the file save the changes.
+
+Now that `/usr/local/bin/bash` is in our `/etc/shells` file, we can set it as our default shell (you will need to enter your password for this command as well):
+
+```sh
+chsh -s /usr/local/bin/bash
+```
+
+Now that you've changed your shell, if you open up a new iTerm2 tab or close / re-open iTerm2, you should be presented with a `bash` shell!
+
+You can run the following to confirm you shell has changed:
+
+```sh
+echo $SHELL
+```
 
 ### Install Utilities
 
@@ -93,10 +170,6 @@ git clone git@github.com:nalmeida/dotfiles.git
 ```
 
 ### Config your bash profile
-
-New Mac OS uses Zshell by default. Check if it is the case and, if so, change it to default shell.
-
-On Terminal all, open "Preferences > General" and change to: `/bin/bash`
 
 Create a symbolic link for the `~/.bash_profile` to the one in this repo.
 
