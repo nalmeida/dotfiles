@@ -211,3 +211,4 @@ Set duplicate line shortcut: `Code > Preferences > Keyboard Shortcuts`:
 
 * [Jason Lengstorf’s Dotfiles](https://github.com/jlengstorf/dotfiles)
 * [CJ from Coding Garden](https://github.com/CodingGarden/vscode-settings)
+teste
