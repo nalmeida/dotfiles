@@ -39,6 +39,8 @@ brew install --cask authy
 brew install --cask there
 brew install --cask iterm2
 brew install --cask raycast
+brew install go
+brew install httpx
 brew install httpie # Docs here: https://httpie.io/docs/cli
 ```
 
