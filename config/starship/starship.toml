@@ -1,0 +1,31 @@
+# Sample file: Config: https://github.com/hendrikmi/dotfiles/blob/2d60f326a68ffd793c8d5d710925b23faca2f731/starship/starship.toml
+
+format = """
+$directory\
+$git_branch\
+$git_status\
+$python\
+$lua\
+$nodejs\
+$deno\
+$golang\
+$rust\
+$aws\
+$docker_context\
+$jobs\
+$character"""
+
+add_newline = false
+
+# Replace the '❯' symbol in the prompt with '⚡'
+# Doc: https://starship.rs/config/
+[character] # The name of the module we are configuring is 'character'
+success_symbol = '[\$](yellow)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+error_symbol = '[\$](red)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+
+[directory]
+# style = 'bold fg:dark_blue'
+format = '[$path ]($style)'
+truncation_length = 3
+truncation_symbol = ' …/'
+truncate_to_repo = false
