@@ -1,2 +1,0 @@
-(sleep 2 && open "https://localhost:4443/") &
-python3 /Users/nicalmei/bin/simple-https-server.py
