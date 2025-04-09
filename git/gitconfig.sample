@@ -1,0 +1,19 @@
+[user]
+    name = Your Name
+    email = your@email.com
+
+[includeIf "gitdir:~/github.com/WORK_FOLDER/"]
+    path = ~/.gitconfig_WORK
+
+[github]
+    user = GITHUB_USER
+
+[core]
+    excludesfile = ~/.gitignore_global
+    editor = vim
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
