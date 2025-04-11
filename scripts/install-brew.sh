@@ -6,12 +6,13 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Install cask packages
 apps=(
-    git
+		git
 		bat
 		eza
 		starship
 		go
 		httpx
+		bats-core
 )
 
 info "Installing "${apps[@]}""
