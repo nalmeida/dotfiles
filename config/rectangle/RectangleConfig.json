@@ -104,7 +104,7 @@
       "int" : 0
     },
     "landscapeSnapAreas" : {
-      "string" : "[3,{\"action\":16},4,{\"compound\":-2},1,{\"action\":15},5,{\"compound\":-3},6,{\"action\":13},7,{\"action\":10},8,{\"action\":14},2,{\"action\":11}]"
+      "string" : "[3,{\"action\":16},4,{\"compound\":-2},1,{\"action\":15},5,{\"compound\":-3},6,{\"action\":13},8,{\"action\":14}]"
     },
     "launchOnLogin" : {
       "bool" : true
@@ -306,5 +306,5 @@
       "modifierFlags" : 1835008
     }
   },
-  "version" : "92"
+  "version" : "93"
 }
