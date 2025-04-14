@@ -57,3 +57,4 @@ From your `~/github.com/nalmeida/dotfiles` folder:
 
 * https://github.com/hendrikmi/dotfiles/tree/main/scripts 
 * https://github.com/myshov/dotfiles
+* [Youtube video: The Top 5 ZSH Plugins I CAN'T Live Without!](https://www.youtube.com/watch?v=wHnMd8uz6j0)
