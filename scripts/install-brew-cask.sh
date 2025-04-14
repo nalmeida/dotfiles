@@ -77,18 +77,18 @@ for i in {1..${#apps}}; do
 	app=${apps[$i]}
 	app_path=${app_paths[$i]}
 	
-	echo "==> Processing $app (path: $app_path)"
+	info "Processing $app (path: $app_path)"
 	
 	# First check if the app exists in /Applications
 	if [[ -d "$app_path" ]]; then
-		echo "App '$app' is already installed at '$app_path'."
+		warning "App '$app' is already installed at '$app_path'."
 		
 		if $FORCE; then
 			echo "Force option detected. Attempting to reinstall/upgrade '$app'..."
 			brew uninstall --cask "$app" --force &>/dev/null || true
 			brew install --cask "$app" || echo "Error reinstalling '$app', continuing with next apps..."
 		elif $SKIP_INSTALLED; then
-			echo "Skip installed option detected. Skipping '$app'..."
+			error "Skip installed option detected. Skipping '$app'..."
 		else
 			read "choice?Do you want to attempt to upgrade '$app'? (y/n): "
 			case "$choice" in
@@ -98,19 +98,19 @@ for i in {1..${#apps}}; do
 					brew install --cask "$app" || echo "Error upgrading '$app', continuing with next apps..."
 					;;
 				*)
-					echo "Skipping upgrade of '$app'."
+					error "Skipping upgrade of '$app'."
 					;;
 			esac
 		fi
 	# As a backup, also check if brew thinks it's installed
 	elif brew list --cask "$app" &>/dev/null; then
-		echo "App '$app' is tracked by Homebrew but not found at expected location."
+		warning "App '$app' is tracked by Homebrew but not found at expected location."
 		
 		if $FORCE; then
 			echo "Force option detected. Upgrading '$app'..."
 			brew upgrade --cask "$app" || echo "Error upgrading '$app', continuing with next apps..."
 		elif $SKIP_INSTALLED; then
-			echo "Skip installed option detected. Skipping '$app'..."
+			error "Skip installed option detected. Skipping '$app'..."
 		else
 			read "choice?Do you want to upgrade '$app'? (y/n): "
 			case "$choice" in
@@ -119,7 +119,7 @@ for i in {1..${#apps}}; do
 					brew upgrade --cask "$app" || echo "Error upgrading '$app', continuing with next apps..."
 					;;
 				*)
-					echo "Skipping upgrade of '$app'."
+					error "Skipping upgrade of '$app'."
 					;;
 			esac
 		fi
@@ -129,4 +129,4 @@ for i in {1..${#apps}}; do
 	fi
 done
 
-echo "Process completed!"
+success "Process completed!"
