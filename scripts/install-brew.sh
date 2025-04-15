@@ -47,14 +47,13 @@ done
 
 # Define packages explicitly in array
 packages=(
+	"starship" 
 	"git" 
 	"wget" 
 	"bat" 
 	"eza" 
-	"starship" 
 	"go" 
 	"httpx" 
-	"bats-core" 
 	"zsh-autosuggestions" 
 	"zsh-syntax-highlighting"
 )
