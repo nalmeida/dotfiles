@@ -48,6 +48,7 @@ done
 # Define packages explicitly in array
 packages=(
 	"git" 
+	"wget" 
 	"bat" 
 	"eza" 
 	"starship" 
