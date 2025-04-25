@@ -53,7 +53,7 @@ packages=(
 	"bat" 
 	"eza" 
 	"go" 
-	"httpx" 
+	# "httpx" use the Go installer: https://github.com/projectdiscovery/httpx
 	"zsh-autosuggestions" 
 	"zsh-syntax-highlighting"
 )
