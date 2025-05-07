@@ -21,3 +21,8 @@ export NVM_DIR="$HOME/.nvm"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
+
+# Rust
+# Install: https://doc.rust-lang.org/cargo/getting-started/installation.html
+# $ curl https://sh.rustup.rs -sSf | sh
+. "$HOME/.cargo/env"
