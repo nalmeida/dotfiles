@@ -181,7 +181,3 @@ This script will create symbolic links from your dotfiles repository to your hom
 * [YouTube: The Top 5 ZSH Plugins I CAN'T Live Without!](https://www.youtube.com/watch?v=wHnMd8uz6j0)
 * [Homebrew Homepage](https://brew.sh/)
 * [Oh My Zsh - Terminal Customization](https://ohmyz.sh/)
-
----
-
-![Terminal Preview](https://via.placeholder.com/800x400?text=Terminal+Preview)
