@@ -6,6 +6,7 @@ alias rm=trash "$@"
 alias l="eza --color=always --long --git --icons=always --no-user --no-permissions"
 alias ll="l -la"
 alias cd..="cd .."
+alias history="history 0"
 
 # ---------------------------------- Automatic install
 
