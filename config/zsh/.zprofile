@@ -7,6 +7,8 @@ alias l="eza --color=always --long --git --icons=always --no-user --no-permissio
 alias ll="l -la"
 alias cd..="cd .."
 alias history="history 0"
+# Requires the installation of the `squint`: https://github.com/kimmobrunfeldt/squint
+alias sshot=squint "$@"
 
 # ---------------------------------- Automatic install
 
