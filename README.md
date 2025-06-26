@@ -142,8 +142,10 @@ The scripts `install-brew-cask.sh` and `install-brew.sh` will install most appli
     - Open preferences with `⌘+,`
     - Set font size to 18: `font-size=18` 
     - Set font to FiraMono Nerd Font: `font-family="FiraMono Nerd Font"`
+    - Theme used [flexoki dark](https://github.com/kepano/flexoki) (same used for VS Code)
     - More configuration options: [Birchtree.me Ghostty Config](https://birchtree.me/blog/my-lil-ghosty-terminal-config-2/)
     - Configuration reference: [Ghostty Documentation](https://ghostty.zerebos.com/)
+    - 
 
 ### Development Tools
 
