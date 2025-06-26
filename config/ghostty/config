@@ -56,3 +56,5 @@ desktop-notifications=false
 clipboard-read=allow
 clipboard-write=allow
 copy-on-select=false
+
+theme=flexoki-dark
