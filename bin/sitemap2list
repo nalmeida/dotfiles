@@ -2,19 +2,24 @@
 
 VERSION="v1.0.0"
 
+# Version function
+show_version() {
+  echo "$(basename "$0") $VERSION"
+}
+
 # Help function
 show_help() {
     echo -e "sitemap2list $VERSION • @nalmeida"
     echo ""
-    echo "Usage: $0 [SITEMAP_URL]"
+    echo "Usage: sitemap2list [SITEMAP_URL]"
     echo ""
     echo "Options:"
     echo "  -h, --help           Display this help message"
-    echo "  -V, --version        Display the version"
+    echo "  -v, --version        Display the version"
 
     echo "Examples:"
-    echo "  $0 https://www.sitemaps.org/sitemap.xml"
-    echo "  $0 https://www.sitemaps.org/sitemap.xml > list.txt"
+    echo "  sitemap2list https://www.sitemaps.org/sitemap.xml"
+    echo "  sitemap2list https://www.sitemaps.org/sitemap.xml > list.txt"
     exit 0
 }
 
@@ -103,4 +108,19 @@ if [ $# -eq 0 ]; then
     show_help
 fi
 
-parse_sitemap $1
+# Process arguments
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -h|--help)
+            show_help
+            ;;
+        -v|--version)
+            show_version
+            exit 0
+            ;;
+        *)
+            parse_sitemap $1
+            shift
+            ;;
+    esac
+done
