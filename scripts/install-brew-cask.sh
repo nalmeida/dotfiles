@@ -56,6 +56,7 @@ apps=(
 	visual-studio-code
 	rectangle
 	ghostty
+	imageoptim
 )
 
 app_paths=(
@@ -68,6 +69,7 @@ app_paths=(
 	"/Applications/Visual Studio Code.app"
 	"/Applications/Rectangle.app"
 	"/Applications/Ghostty.app"
+	"/Applications/ImageOptim.app"
 )
 
 info "Preparing to install: ${apps[@]}"
