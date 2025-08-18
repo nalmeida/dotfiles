@@ -65,6 +65,15 @@ git clone git@github.com:nalmeida/dotfiles.git ~/github.com/nalmeida/dotfiles
   - Go to System Settings > Keyboard > Text Input
   - Click "Edit" and uncheck "Show Input menu in menu bar"
 
+### Clock Display
+
+- System Settings > Control Center, then find "Clock" and uncheck "Show the day of the week".
+
+### Do not Disturb
+
+- System Settings > Control Center (or Dock & Menu Bar on older systems), find Do Not Disturb, and choose "Don't Show in Menu Bar".
+
+
 ## Applications Installation
 
 ### Via Homebrew Scripts
