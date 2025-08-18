@@ -108,11 +108,11 @@ The scripts `install-brew-cask.sh` and `install-brew.sh` will install most appli
 
 #### Screenshot & File Sharing
 - [Monosnap](https://monosnap.com/download) (from Mac App Store)
+  - Turn off macOS standard screenshot shortcuts:
+    - System Settings > Keyboard > Keyboard Shortcuts > Screenshots
   - Configure hotkeys:
     - Capture area: `⌘+⇧+4`
     - Capture fullscreen: `⌘+⇧+5`
-  - Turn off macOS standard screenshot shortcuts:
-    - System Settings > Keyboard > Keyboard Shortcuts > Screenshots
 - [LocalSend](https://localsend.org/download) for cross-platform file sharing
 
 #### Note Taking
