@@ -47,6 +47,7 @@ done
 
 # Define packages explicitly in array
 packages=(
+	"mas" 
 	"starship" 
 	"git" 
 	"wget" 
