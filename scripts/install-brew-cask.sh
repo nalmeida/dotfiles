@@ -57,6 +57,7 @@ apps=(
 	rectangle
 	ghostty
 	imageoptim
+	localsend
 )
 
 app_paths=(
@@ -70,6 +71,7 @@ app_paths=(
 	"/Applications/Rectangle.app"
 	"/Applications/Ghostty.app"
 	"/Applications/ImageOptim.app"
+	"/Applications/LocalSend.app"
 )
 
 info "Preparing to install: ${apps[@]}"
