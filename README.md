@@ -41,6 +41,12 @@ eval $(/opt/homebrew/bin/brew shellenv)
 ### Create a folder structure for GitHub projects
 
 ```bash
+# Install gh via homebrew
+brew install gh
+
+# Login 
+gh auth login
+
 # Create a folder for GitHub related projects
 mkdir ~/github.com
 
@@ -115,17 +121,24 @@ The scripts `install-brew-cask.sh` and `install-brew.sh` will install most appli
     2. Search for "Font Family"
     3. Set to `Fira Code, Monaspace Neon, MonoLisa, Menlo, Monaco, 'Courier New', monospace`
 
-#### Screenshot & File Sharing
+#### Mac App Store
+
+Open the **App Store** and login.
+
+##### Install App Store apps via CLI:
+
+```bash
+mas install 540348655 # Monosnap
+mas install 1398373917 # UpNote
+```
+
 - [Monosnap](https://monosnap.com/download) (from Mac App Store)
   - Turn off macOS standard screenshot shortcuts:
     - System Settings > Keyboard > Keyboard Shortcuts > Screenshots
   - Configure hotkeys:
     - Capture area: `⌘+⇧+4`
     - Capture fullscreen: `⌘+⇧+5`
-- [LocalSend](https://localsend.org/download) for cross-platform file sharing
-
-#### Note Taking
-- UpNote (from Mac App Store)
+- [UpNote](https://getupnote.com/#download)
 
 ## Terminal Setup
 
