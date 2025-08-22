@@ -187,6 +187,22 @@ After installing applications, set up symlinks to use your dotfiles configuratio
 
 This script will create symbolic links from your dotfiles repository to your home directory, ensuring all your configuration files are properly set up.
 
+## Optional install and configuration
+
+### Wallpapers
+
+- [Change your wallpapers](wallpapers/wallpapers.md)
+
+
+### How to disable Apple Music 
+
+- [How to disable Apple Music from launching on media keys and make them only work with Spotify](config/skhd/)
+
+### Install
+
+- Whatsapp: `brew install --cask whatsapp`
+- Telegram: `brew install --cask telegram`
+
 ## Resources
 
 ### What's In This Repository
