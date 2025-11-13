@@ -1,0 +1,428 @@
+#!/usr/bin/env bash
+
+VERSION="1.0.0"
+REQUIRED_FFMPEG_VERSION="7.1.1"
+REQUIRED_EXIFTOOL_VERSION="13.36"
+DEBUG_MODE=0
+
+# Color codes for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# Print functions that respect color codes
+print_error() {
+		echo -e "${RED}${1}${NC}" >&2
+}
+
+print_success() {
+		echo -e "${GREEN}${1}${NC}"
+}
+
+print_warning() {
+		echo -e "${YELLOW}${1}${NC}"
+}
+
+print_info() {
+		echo -e " ${NC}${1}${NC}"
+}
+
+# Check if ffmpeg is installed
+check_ffmpeg() {
+		if ! command -v ffmpeg >/dev/null 2>&1; then
+				print_error "Error: ffmpeg is not installed"
+				exit 1
+		fi
+		
+		FFMPEG_VERSION=$(ffmpeg -version | head -n1 | sed -n 's/^ffmpeg version \([0-9.]*\).*/\1/p')
+		print_success "FFmpeg version: ${FFMPEG_VERSION}"
+}
+
+# Check if exiftool is installed and meets minimum version
+check_exiftool() {
+		if ! command -v exiftool >/dev/null 2>&1; then
+				print_error "Error: exiftool is not installed"
+				print_info "Install exiftool using: brew install exiftool"
+				exit 1
+		fi
+		
+		EXIFTOOL_VERSION=$(exiftool -ver)
+		
+		# Version comparison (simple numeric comparison)
+		if awk "BEGIN {exit !($EXIFTOOL_VERSION < $REQUIRED_EXIFTOOL_VERSION)}"; then
+				print_error "Error: exiftool version ${EXIFTOOL_VERSION} is below minimum required version ${REQUIRED_EXIFTOOL_VERSION}"
+				print_info "Update exiftool using: brew upgrade exiftool"
+				exit 1
+		fi
+		
+		# print_success "exiftool version: ${EXIFTOOL_VERSION}"
+}
+
+# Display help information
+show_help() {
+		cat << EOF
+ff - ffmpeg wrapper and utilities v${VERSION}
+
+USAGE:
+  ff <command> [options]
+
+COMMANDS:
+  compress        Compress video files
+  exif            Exif metadata operations
+  version         Show ffmpeg version
+  help            Show this help message
+
+COMPRESS OPTIONS:
+  -i, --input <file>      Input video file (required)
+  -o, --output <file>     Output file (optional, default: input_compressed_YYYY.MM.DD-HH.MM.SS.ext)
+  -p, --percent <value>   Compress to percentage of original size (1-99)
+  -m, --max-size <size>   Compress to maximum size in Kb
+  -d, --debug             Show detailed ffmpeg output
+  -h, --help              Show compress command help
+
+EXIF OPTIONS:
+  -i, --input <file>      Input file (required)
+  -o, --output <file>     Output file (optional, default: input_clear_YYYYMMDD-HHMMSS.ext)
+  -h, --help              Show exif command help
+
+EXAMPLES:
+  ff compress -i input.mp4 -p 50
+  ff compress -i input.mp4 -m 5000
+  ff compress -i input.mp4 --percent 30 -o output.mp4
+  ff exif clear -i input.mp4
+  ff exif clear -i input.mp4 -o output.mp4
+  ff version
+  ff help
+
+EOF
+}
+
+# Get file size in Kb
+get_file_size_kb() {
+		local file="$1"
+		if [ -f "$file" ]; then
+				# Try macOS stat first, then Linux stat
+				local bytes=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null)
+				echo $((bytes / 1024))
+		else
+				echo 0
+		fi
+}
+
+# Generate output filename
+generate_output_filename() {
+		local input="$1"
+		local dirname=$(dirname "$input")
+		local basename=$(basename "$input")
+		local filename="${basename%.*}"
+		local extension="${basename##*.}"
+		local timestamp=$(date +%Y.%m.%d-%H.%M.%S)
+		
+		echo "${dirname}/${filename}_compressed_${timestamp}.${extension}"
+}
+
+# Generate output filename for exif clear
+generate_exif_output_filename() {
+		local input="$1"
+		local dirname=$(dirname "$input")
+		local basename=$(basename "$input")
+		local filename="${basename%.*}"
+		local extension="${basename##*.}"
+		local timestamp=$(date +%Y%m%d-%H%M%S)
+		
+		echo "${dirname}/${filename}_clear_${timestamp}.${extension}"
+}
+
+# Compress video by percentage
+compress_by_percent() {
+		local input="$1"
+		local output="$2"
+		local percent="$3"
+		
+		if [ "$percent" -lt 1 ] || [ "$percent" -gt 99 ]; then
+				print_error "Error: Percentage must be between 1 and 99"
+				exit 1
+		fi
+		
+		print_warning "Analyzing (${input}) file..."
+		local original_size=$(get_file_size_kb "$input")
+		local target_size=$((original_size * percent / 100))
+		
+		print_success " Original size: ${original_size} Kb"
+		print_success " Target size: ${target_size} Kb (${percent}%)"
+		
+		compress_to_size "$input" "$output" "$target_size"
+}
+
+# Compress video to specific size
+compress_to_size() {
+		local input="$1"
+		local output="$2"
+		local target_kb="$3"
+		
+		print_warning "Analyzing (${input}) file..."
+		local duration=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "$input" 2>/dev/null)
+		
+		if [ -z "$duration" ] || [ "$duration" = "N/A" ]; then
+				print_error "Error: Could not determine video duration"
+				exit 1
+		fi
+		
+		# Calculate target bitrate (in kbps)
+		# Formula: (target_size_kb * 8) / duration - audio_bitrate
+		local audio_bitrate=128
+		local target_total_bitrate=$(awk "BEGIN {printf \"%.0f\", ($target_kb * 8) / $duration}")
+		local target_video_bitrate=$((target_total_bitrate - audio_bitrate))
+		
+		# Validate bitrate is within reasonable bounds
+		if [ "$target_video_bitrate" -lt 100 ]; then
+				print_error "Error: Target size too small. Video bitrate would be ${target_video_bitrate} kbps (minimum: 100 kbps)"
+				print_info "Tip: Try a larger target size or use a shorter video"
+				exit 1
+		fi
+		
+		# libx264 max bitrate is around 2147483 kbps (INT_MAX in kb/s)
+		if [ "$target_video_bitrate" -gt 2000000 ]; then
+				print_error "Error: Target size too large. Video bitrate would be ${target_video_bitrate} kbps (maximum: 2000000 kbps)"
+				print_info "Tip: Your target size is too large for this video duration. Consider not compressing or using a smaller percentage."
+				exit 1
+		fi
+		
+		print_info "Video duration: ${duration} seconds"
+		print_info "Calculated video bitrate: ${target_video_bitrate} kbps"
+		print_info "Audio bitrate: ${audio_bitrate} kbps"
+		print_warning "Compressing video (${input}) to max ${target_kb} Kb..."
+		
+		# Set ffmpeg verbosity based on debug mode
+		local ffmpeg_log_level="error"
+		local ffmpeg_stats="-nostats"
+		if [ "$DEBUG_MODE" -eq 1 ]; then
+				ffmpeg_log_level="info"
+				ffmpeg_stats="-stats"
+		fi
+		
+		ffmpeg -hide_banner -loglevel "$ffmpeg_log_level" $ffmpeg_stats \
+				-i "$input" \
+				-c:v libx264 \
+				-b:v "${target_video_bitrate}k" \
+				-maxrate "${target_video_bitrate}k" \
+				-bufsize "$((target_video_bitrate * 2))k" \
+				-c:a aac \
+				-b:a "${audio_bitrate}k" \
+				-movflags +faststart \
+				-y "$output"
+		
+		if [ $? -eq 0 ]; then
+				local final_size=$(get_file_size_kb "$output")
+				print_success "Compression complete!"
+				print_success "Output file: ${output}"
+				print_success "Final size: ${final_size} Kb"
+		else
+				print_error "Error: Compression failed"
+				exit 1
+		fi
+}
+
+# Exif clear command handler
+cmd_exif_clear() {
+		local input=""
+		local output=""
+		
+		while [ $# -gt 0 ]; do
+				case "$1" in
+						-i|--input)
+								input="$2"
+								shift 2
+								;;
+						-o|--output)
+								output="$2"
+								shift 2
+								;;
+						-h|--help)
+								show_help
+								exit 0
+								;;
+						*)
+								print_error "Error: Unknown option '$1'"
+								echo "Use 'ff exif clear --help' for usage information"
+								exit 1
+								;;
+				esac
+		done
+		
+		# Validate input
+		if [ -z "$input" ]; then
+				print_error "Error: Input file is required"
+				echo "Use 'ff exif clear --help' for usage information"
+				exit 1
+		fi
+		
+		if [ ! -f "$input" ]; then
+				print_error "Error: Input file does not exist: $input"
+				exit 1
+		fi
+		
+		# Check exiftool installation and version
+		check_exiftool
+		
+		# Generate output filename if not provided
+		if [ -z "$output" ]; then
+				output=$(generate_exif_output_filename "$input")
+		fi
+		
+		print_warning "Clearing EXIF metadata from (${input})..."
+		
+		# Copy file first, then clear metadata
+		cp "$input" "$output"
+		
+		if [ $? -ne 0 ]; then
+				print_error "Error: Failed to copy input file"
+				exit 1
+		fi
+		
+		# Clear all metadata from the output file
+		exiftool -all= -overwrite_original "$output" >/dev/null 2>&1
+		
+		if [ $? -eq 0 ]; then
+				print_success "EXIF metadata cleared successfully!"
+				print_success "Output file: ${output}"
+		else
+				print_error "Error: Failed to clear EXIF metadata"
+				rm -f "$output"
+				exit 1
+		fi
+}
+
+# Exif command handler
+cmd_exif() {
+		if [ $# -eq 0 ]; then
+				print_error "Error: exif subcommand required"
+				echo "Use 'ff exif clear --help' for usage information"
+				exit 1
+		fi
+		
+		case "$1" in
+				clear)
+						shift
+						cmd_exif_clear "$@"
+						;;
+				-h|--help)
+						show_help
+						;;
+				*)
+						print_error "Error: Unknown exif subcommand '$1'"
+						echo "Use 'ff help' for usage information"
+						exit 1
+						;;
+		esac
+}
+
+# Compress command handler
+cmd_compress() {
+		local input=""
+		local output=""
+		local percent=""
+		local max_size=""
+		
+		while [ $# -gt 0 ]; do
+				case "$1" in
+						-i|--input)
+								input="$2"
+								shift 2
+								;;
+						-o|--output)
+								output="$2"
+								shift 2
+								;;
+						-p|--percent)
+								percent="$2"
+								shift 2
+								;;
+						-m|--max-size)
+								max_size="$2"
+								shift 2
+								;;
+						-d|--debug)
+								DEBUG_MODE=1
+								shift
+								;;
+						-h|--help)
+								show_help
+								exit 0
+								;;
+						*)
+								print_error "Error: Unknown option '$1'"
+								echo "Use 'ff compress --help' for usage information"
+								exit 1
+								;;
+				esac
+		done
+		
+		# Validate input
+		if [ -z "$input" ]; then
+				print_error "Error: Input file is required"
+				echo "Use 'ff compress --help' for usage information"
+				exit 1
+		fi
+		
+		if [ ! -f "$input" ]; then
+				print_error "Error: Input file does not exist: $input"
+				exit 1
+		fi
+		
+		# Generate output filename if not provided
+		if [ -z "$output" ]; then
+				output=$(generate_output_filename "$input")
+		fi
+		
+		# Check compression mode
+		if [ -n "$percent" ] && [ -n "$max_size" ]; then
+				print_error "Error: Cannot use both -p/--percent and -m/--max-size"
+				exit 1
+		fi
+		
+		if [ -z "$percent" ] && [ -z "$max_size" ]; then
+				print_error "Error: Must specify either -p/--percent or -m/--max-size"
+				exit 1
+		fi
+		
+		# Execute compression
+		if [ -n "$percent" ]; then
+				compress_by_percent "$input" "$output" "$percent"
+		elif [ -n "$max_size" ]; then
+				compress_to_size "$input" "$output" "$max_size"
+		fi
+}
+
+# Main script logic
+main() {
+		if [ $# -eq 0 ]; then
+				show_help
+				exit 0
+		fi
+		
+		case "$1" in
+				compress)
+						shift
+						cmd_compress "$@"
+						;;
+				exif)
+						shift
+						cmd_exif "$@"
+						;;
+				version)
+						check_ffmpeg
+						;;
+				help|-h|--help)
+						show_help
+						;;
+				*)
+						print_error "Error: Unknown command '$1'"
+						echo "Use 'ff help' for usage information"
+						exit 1
+						;;
+		esac
+}
+
+main "$@"
