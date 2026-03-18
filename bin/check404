@@ -1,0 +1,151 @@
+#!/usr/bin/env zsh
+
+VERSION="1.0.0"
+REQUIRED_LYCHEE_VERSION="0.23.0"
+OVERRIDE_USER_AGENT="Mozilla/5.0 (iPhone; CPU iPhone OS 17_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Mobile/15E148 Safari/604.1"
+
+# Color codes for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# Print functions that respect color codes
+print_error() {
+    echo -e "${RED}${1}${NC}" >&2
+}
+
+print_success() {
+    echo -e "${GREEN}${1}${NC}"
+}
+
+print_warning() {
+    echo -e "${YELLOW}${1}${NC}"
+}
+
+print_info() {
+    echo -e " ${NC}${1}${NC}"
+}
+
+# Check if curl is installed
+check_curl() {
+    if ! command -v curl >/dev/null 2>&1; then
+        print_error "Error: curl is not installed"
+        print_info "Install curl using: brew install curl"
+        exit 1
+    fi
+}
+
+# Check if lychee is installed
+check_lychee() {
+    if ! command -v lychee >/dev/null 2>&1; then
+        print_error "Error: lychee is not installed"
+        print_info "Install lychee using: brew install lychee"
+        exit 1
+    fi
+    
+    LYCHEE_VERSION=$(lychee --version 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -n1)
+}
+
+# Display help information
+show_help() {
+    cat << EOF
+check404 - Validate links from XML sitemaps or text files v${VERSION}
+
+USAGE:
+  check404 [OPTIONS] <SITEMAP_URL|FILE_PATH>
+
+OPTIONS:
+  -f, --file      Treat input as a text file with one URL per line
+  -v, --version   Show version information
+  -h, --help      Show this help message
+
+EXAMPLES:
+  # Check links from a sitemap
+  check404 https://example.com/sitemap.xml
+
+  # Check links from a text file
+  check404 -f urls.txt
+  check404 --file /path/to/links.txt
+
+DEPENDENCIES:
+  curl, lychee
+
+EOF
+}
+
+# Show version information
+show_version() {
+    echo "check404 v${VERSION}"
+    check_curl
+    check_lychee
+}
+
+# Main function
+main() {
+    local FILE_MODE=false
+    local INPUT=""
+    
+    # Parse arguments
+    while [ $# -gt 0 ]; do
+        case "$1" in
+            -h|--help)
+                show_help
+                exit 0
+                ;;
+            -v|--version)
+                show_version
+                exit 0
+                ;;
+            -f|--file)
+                FILE_MODE=true
+                shift
+                ;;
+            -*)
+                print_error "Error: Unknown option '$1'"
+                echo "Use 'check404 --help' for usage information"
+                exit 1
+                ;;
+            *)
+                INPUT="$1"
+                shift
+                ;;
+        esac
+    done
+    
+    # Verify input is provided
+    if [ -z "$INPUT" ]; then
+        print_error "Error: Input (sitemap URL or file path) is required"
+        echo "Use 'check404 --help' for usage information"
+        exit 1
+    fi
+    
+    # Check dependencies
+    check_curl
+    check_lychee
+    
+    # Process based on mode
+    if [ "$FILE_MODE" = true ]; then
+        # File mode: read URLs from text file
+        if [ ! -f "$INPUT" ]; then
+            print_error "Error: File '$INPUT' not found"
+            exit 1
+        fi
+        
+        # print_warning "Checking links from file (${INPUT})..."
+        cat "$INPUT" | xargs lychee --user-agent "$OVERRIDE_USER_AGENT" -q
+    else
+        # Sitemap mode: extract links from XML sitemap
+        # print_warning "Checking links from sitemap (${INPUT})..."
+        curl -s -A "$OVERRIDE_USER_AGENT" "$INPUT" | grep -oE '<loc>[^<]+' | sed 's/<loc>//' | xargs lychee --user-agent "$OVERRIDE_USER_AGENT" -q
+    fi
+    
+    # if [ $? -eq 0 ]; then
+    #     print_success "Link check complete!"
+    # else
+    #     print_error "Error: Link check failed"
+    #     exit 1
+    # fi
+}
+
+main "$@"
