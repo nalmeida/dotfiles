@@ -55,26 +55,6 @@ matches:
   - trigger: ":zen"
     replace: "⊹╰(⌣ʟ⌣)╯⊹"
 
-  - trigger: ":noo"
-    replace: |
-      N
-        O
-          O
-           o
-            o
-            o
-           o
-          。
-        。
-       .
-       .
-        .
-          .
-
-  # URL
-  - trigger: ">>jit"
-    replace: "https://meet.jit.si/nalmeida"
-
   # Dates & Time
   - trigger: "ddate"
     replace: "{{ndate}}"
