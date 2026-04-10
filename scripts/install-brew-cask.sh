@@ -60,6 +60,7 @@ apps=(
 	localsend
 	espanso
 	cmux
+	handy
 )
 
 app_paths=(
@@ -76,6 +77,7 @@ app_paths=(
 	"/Applications/LocalSend.app"
 	"/Applications/Espanso.app"
 	"/Applications/cmux.app"
+	"/Applications/Handy.app"
 )
 
 info "Preparing to install: ${apps[@]}"
