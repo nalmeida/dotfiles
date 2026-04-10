@@ -58,6 +58,8 @@ apps=(
 	ghostty
 	imageoptim
 	localsend
+	espanso
+	cmux
 )
 
 app_paths=(
@@ -72,6 +74,8 @@ app_paths=(
 	"/Applications/Ghostty.app"
 	"/Applications/ImageOptim.app"
 	"/Applications/LocalSend.app"
+	"/Applications/Espanso.app"
+	"/Applications/cmux.app"
 )
 
 info "Preparing to install: ${apps[@]}"

@@ -1,0 +1,153 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
+
+matches:
+  # Simple text replacement
+  - trigger: "aabs"
+    replace: "Abs,\nNicholas ºLº,"
+
+  - trigger: "bbest"
+    replace: "Best,\nNicholas"
+
+  - trigger: "aass"
+    replace: "Qualquer dúvida, estou à disposição\nAbs,\nNicholas"
+
+  - triggers: ["ccheck", "ttick"]
+    replace: "✓"
+
+  - trigger: "wwrong"
+    replace: "✗"
+
+  - trigger: "==>"
+    replace: "→"
+
+  - trigger: "<=="
+    replace: "←"
+
+  - trigger: "==^"
+    replace: "↑"
+
+  - trigger: "==v"
+    replace: "↓"
+
+  # ASC II Icons & Symbols
+  - trigger: ":wtf"
+    replace: "¯\\_(ツ)_/¯"
+
+  - trigger: ":ye"
+    replace: "ᕙ (ºLº,) ᕗ"
+
+  - trigger: ":fuck"
+    replace: "(⋟﹏⋞)"
+
+  - trigger: ":sad"
+    replace: "(╥_╥)"
+
+  - trigger: ":zen"
+    replace: "⊹╰(⌣ʟ⌣)╯⊹"
+
+  - trigger: ":noo"
+    replace: |
+      N
+        O
+          O
+           o
+            o
+            o
+           o
+          。
+        。
+       .
+       .
+        .
+          .
+
+  # URL
+  - trigger: ">>jit"
+    replace: "https://meet.jit.si/nalmeida"
+
+  # Dates & Time
+  - trigger: "ddate"
+    replace: "{{ndate}}"
+    vars:
+      - name: ndate
+        type: date
+        params:
+          format: "%d/%m/%Y"
+
+  - trigger: "usdate"
+    replace: "{{usdate}}"
+    vars:
+      - name: usdate
+        type: date
+        params:
+          format: "%m/%d/%Y"
+
+  - trigger: "fdate"
+    replace: "{{fdate}}"
+    vars:
+      - name: fdate
+        type: date
+        params:
+          format: "%Y.%m.%d"
+
+  - trigger: "ttime"
+    replace: "{{time}}"
+    vars:
+      - name: time
+        type: date
+        params:
+          format: "%Hh%M"
+
+  - trigger: "gtime"
+    replace: "{{gmt_time}}"
+    vars:
+      - name: gmt_time
+        type: date
+        params:
+          format: "%Hh%M"
+          offset: 10800
+
+  # HTML
+
+  - trigger: ">>lorem"
+    replace: "Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Donec sed odio operae, eu vulputate felis rhoncus. Salutantibus vitae elit libero, a pharetra augue. Nihil hic munitissimus habendi senatus locus, nihil horum? A communi observantia non est recedendum."
+
+  - trigger: ">>html"
+    replace: |
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <link rel="stylesheet" href="https://unpkg.com/modesto@latest/modesto.min.css">
+
+      <title></title>
+      </head>
+      <body>
+      $|$
+      </body>
+      </html>
+  
+  - trigger: ">>modesto"
+    replace: "<link rel=\"stylesheet\" href=\"https://unpkg.com/modesto@latest/modesto.min.css\">\n"
+
+  # Shell commands
+  - trigger: ">>shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo Hello from your shell"
