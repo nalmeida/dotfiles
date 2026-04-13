@@ -123,6 +123,27 @@ matches:
   - trigger: ">>modesto"
     replace: "<link rel=\"stylesheet\" href=\"https://unpkg.com/modesto@latest/modesto.min.css\">\n"
 
+  # Translation
+  - trigger: ">>trans"
+    replace: "{{output}}"
+    vars:
+      - name: clipb
+        type: clipboard
+      - name: output
+        type: shell
+        params:
+          cmd: "trans :en -b \"$ESPANSO_CLIPB\""
+
+  - trigger: ">>brtrans"
+    replace: "{{output}}"
+    vars:
+      - name: clipb
+        type: clipboard
+      - name: output
+        type: shell
+        params:
+          cmd: "trans :pt-br -b \"$ESPANSO_CLIPB\""
+
   # Shell commands
   - trigger: ">>shell"
     replace: "{{output}}"
