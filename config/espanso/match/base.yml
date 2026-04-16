@@ -99,10 +99,12 @@ matches:
 
   # HTML
 
-  - trigger: ">>lorem"
+  - triggers: 
+    - "<<lorem"
+    - "<<loren"
     replace: "Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Donec sed odio operae, eu vulputate felis rhoncus. Salutantibus vitae elit libero, a pharetra augue. Nihil hic munitissimus habendi senatus locus, nihil horum? A communi observantia non est recedendum."
 
-  - trigger: ">>html"
+  - trigger: "<<html"
     replace: |
       <!DOCTYPE html>
       <html lang="en">
@@ -120,11 +122,11 @@ matches:
       </body>
       </html>
   
-  - trigger: ">>modesto"
+  - trigger: "<<modesto"
     replace: "<link rel=\"stylesheet\" href=\"https://unpkg.com/modesto@latest/modesto.min.css\">\n"
 
   # Translation
-  - trigger: ">>trans"
+  - trigger: "<<trans"
     replace: "{{output}}"
     vars:
       - name: clipb
@@ -134,7 +136,7 @@ matches:
         params:
           cmd: "trans :en -b \"$ESPANSO_CLIPB\""
 
-  - trigger: ">>brtrans"
+  - trigger: "<<brtrans"
     replace: "{{output}}"
     vars:
       - name: clipb
@@ -145,7 +147,7 @@ matches:
           cmd: "trans :pt-br -b \"$ESPANSO_CLIPB\""
 
   # Shell commands
-  - trigger: ">>shell"
+  - trigger: "<<shell"
     replace: "{{output}}"
     vars:
       - name: output
