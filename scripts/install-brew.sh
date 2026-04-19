@@ -58,6 +58,7 @@ packages=(
 	# "httpx" use the Go installer: https://github.com/projectdiscovery/httpx
 	"zsh-autosuggestions" 
 	"zsh-syntax-highlighting"
+	"gawk"
 )
 
 # Print all packages that will be processed
