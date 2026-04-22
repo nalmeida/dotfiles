@@ -97,6 +97,9 @@ matches:
           format: "%Hh%M"
           offset: 10800
 
+  - trigger: "<<oc"
+    replace: "From 20h to 8h (next day)"
+
   # HTML
 
   - triggers: 
