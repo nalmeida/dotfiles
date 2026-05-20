@@ -61,6 +61,7 @@ apps=(
 	espanso
 	cmux
 	handy
+	pluk-inc/tap/markdown-preview
 )
 
 app_paths=(
@@ -78,6 +79,7 @@ app_paths=(
 	"/Applications/Espanso.app"
 	"/Applications/cmux.app"
 	"/Applications/Handy.app"
+	"/Applications/Markdown Preview.app"
 )
 
 info "Preparing to install: ${apps[@]}"
