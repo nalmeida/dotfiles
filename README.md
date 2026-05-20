@@ -128,17 +128,51 @@ Open the **App Store** and login.
 ##### Install App Store apps via CLI:
 
 ```bash
-mas install 540348655 # Monosnap
 mas install 1398373917 # UpNote
+mas install 1066302071 # New File Menu Lite
 ```
-
-- [Monosnap](https://monosnap.com/download) (from Mac App Store)
-  - Turn off macOS standard screenshot shortcuts:
-    - System Settings > Keyboard > Keyboard Shortcuts > Screenshots
-  - Configure hotkeys:
-    - Capture area: `⌘+⇧+4`
-    - Capture fullscreen: `⌘+⇧+5`
 - [UpNote](https://getupnote.com/#download)
+- [New File Menu Lite](https://apps.apple.com/in/app/new-file-menu-lite/id1066302071)
+  - General > Options
+    - [✓] Launch at login 
+    - [ ] Open file on creation finish 
+    - [✓] Show file on creation finish 
+    - [ ] Activate rename in Finder 
+    - [ ] Keep the helper app running in the background 
+    - [✓] Do not show menu for regular files 
+    - [✓] Do not ask for filename 
+    - [ ] Hide path extensions 
+    - [ ] Put the menu items in a sub menu (10.11 or later) 
+    - [✓] Show file icons in the context menu 
+    - [ ] Show in menu bar Show the "Configure..." menu item
+  - Templates
+    - [✓] Text File
+    - ...
+    - [✓] Markdown Document
+
+#### Direct App install
+
+- [Shottr](https://shottr.cc/) (from Shottr website)
+  - General
+    - Autostart [✓] Launch at startup
+    - Autostart [✓] Launch at startup
+    - After screenshot [✓] Show [ ] Copy [ ] Save
+    - After Area Crop, show (✓) Thumbnail () Editor
+    - Hide preview thumbnail [Manually (close button)]
+  - Hotkeys
+    - Fullscreen screenshot: `⇧⌘5`
+    - Area screenshot: `⇧⌘4`
+    - Repeat area screenshot: ``
+    - Any window screenshot: `⇧⌘3`
+    - Active window screenshot: ``
+    - Scrolling screenshot: `⇧⌘2` 
+    - Show Shottr: `⌃⌥⌘5`
+    - Instant Text/QR Recognition: `⌃⌥⌘O`
+  - Advanced
+    - OCR line breaks [✓] Remove line breaks
+    - Default zoom level: [✓] Prefer 100% 
+    - Action when hiding with Esc:  [✓]  Copy Image [] Save Image
+- [Tome](https://github.com/Gremble-io/tome-app) (from Github releases)
 
 ## Terminal Setup
 
