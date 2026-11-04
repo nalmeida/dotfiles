@@ -68,7 +68,6 @@ skhd -r
 ```
 
 ### 🎧 enjoy! If this was helpful to you, please leave a ⭐
-![a-close-up-of-a-cat-looking-at-the-camera](https://gist.github.com/user-attachments/assets/5d39ecf9-c626-4cc7-92e9-4a67f9698055)
 
 # FAQ
 If Spotify is turned off and you click the media buttons, will it turn on?
@@ -80,7 +79,63 @@ Prev and Next button not working?
 > Check:
 >1. Both versions of config
 >2. Make sure that skhd has Accessibility permissions in System Preferences → Privacy
-<img width="827" height="840" alt="74182" src="https://gist.github.com/user-attachments/assets/c655eefb-875c-4688-9759-3da5cf4c8af8" />
-
+![Device Control and Data Access](acessibility_sample.png)
 
 --- 
+
+## Troubleshooting: media keys do nothing (even Music doesn't react)
+
+Since `rcd` is disabled, skhd is the only thing receiving the media keys. If nothing happens, skhd is most likely not running or lacks permissions.
+
+### 1. Check if skhd is running and read its logs
+
+```
+pgrep -fl skhd
+tail -n 30 /tmp/skhd_$USER.err.log /tmp/skhd_$USER.out.log
+```
+
+If the error log says `skhd: must be run with accessibility access! abort`, it's a permission problem (see the fix below).
+
+### 2. Other useful checks
+
+```
+# Where is the binary? (Apple Silicon: /opt/homebrew/bin/skhd)
+which skhd
+
+# Real path behind the Homebrew symlink
+readlink -f $(which skhd)
+
+# Is the config file in place? (skhd reads ~/.config/skhd/skhdrc or ~/.skhdrc)
+ls -la ~/.skhdrc ~/.config/skhd/skhdrc
+
+# Do key events reach skhd? (stop the service first, then press play/pause)
+skhd --stop-service
+skhd -o
+
+# Can the Spotify command run on its own?
+osascript -e 'tell application "Spotify" to playpause'
+
+# Is rcd still disabled? (a macOS update may re-enable it)
+sudo launchctl print-disabled gui/$(id -u) | grep rcd
+```
+
+Note: on a laptop, play/pause is F8. Make sure "Use F1, F2, etc. keys as standard function keys" is off in Keyboard settings.
+
+### 3. The fix
+
+The skhd entry in the macOS privacy settings was stale or invalid, so the permission was not being applied.
+
+1. Stop the service: `skhd --stop-service`
+2. Open **System Settings → Privacy & Security → Device Control and Data Access**
+3. Remove the existing `skhd` entry with the `-` button
+4. Click `+`, press **⌘⇧G**, paste `/opt/homebrew/bin/skhd` and add it (make sure the toggle is on)
+5. Start the service again: `skhd --start-service`
+
+It worked immediately, no reboot needed.
+
+### Notes
+
+- If you still get the error, also check **Input Monitoring** and try adding the real path from `readlink -f $(which skhd)`.
+- If the OS asks to let skhd control Spotify (Automation), allow it.
+- After `brew upgrade skhd`, the permission may be lost. Repeat the fix above.
+- noTunes is not needed for this setup. It only prevents Music from launching, it doesn't capture keys.
