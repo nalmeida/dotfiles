@@ -130,6 +130,7 @@ Open the **App Store** and login.
 ```bash
 mas install 1398373917 # UpNote
 mas install 1066302071 # New File Menu Lite
+mas install 497799835  # Xcode
 ```
 - [UpNote](https://getupnote.com/#download)
 - [New File Menu Lite](https://apps.apple.com/in/app/new-file-menu-lite/id1066302071)
@@ -209,6 +210,10 @@ mas install 1066302071 # New File Menu Lite
 - NVM (Node Version Manager):
   - Follow the [official NVM installation instructions](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating)
 - Python (see [detailed Python setup guide](upnote://x-callback-url/openNote?noteId=41cf9f45-2c4d-4182-bf68-9d1fe21b57fc))
+- NPM global packages (after NVM/Node is installed):
+  ```bash
+  npm install -g yarn yalc @googleworkspace/cli
+  ```
 
 ## Customizing Dotfiles
 
