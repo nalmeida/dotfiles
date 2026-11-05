@@ -29,4 +29,4 @@ eval "$(pyenv init - zsh)"
 # Rust
 # Install: https://doc.rust-lang.org/cargo/getting-started/installation.html
 # $ curl https://sh.rustup.rs -sSf | sh
-. "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"

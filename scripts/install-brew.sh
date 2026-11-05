@@ -19,7 +19,7 @@ display_help() {
 	echo "  -f, --force          Force install/upgrade all packages without prompting"
 	echo "  -s, --skip-installed Skip already installed packages"
 	echo
-	echo "Without any options, the script will prompt you to upgrade packages that are already installed."
+	echo "Without any options, the script asks before upgrading each installed package (y/n for one, Y/N for all)."
 	exit 0
 }
 
@@ -107,16 +107,12 @@ for package in "${packages[@]}"; do
 		elif $SKIP_INSTALLED; then
 			error "Skip installed option detected. Skipping '$package'..."
 		else
-			read "choice?Do you want to upgrade '$package'? (y/n): "
-			case "$choice" in
-				y|Y|yes|Yes|YES)
-					echo "Upgrading '$package'..."
-					brew upgrade "$package" || echo "Error upgrading '$package', continuing with next packages..."
-					;;
-				*)
-					error "Skipping upgrade of '$package'."
-					;;
-			esac
+			if confirm_all "Do you want to upgrade '$package'?"; then
+				echo "Upgrading '$package'..."
+				brew upgrade "$package" || echo "Error upgrading '$package', continuing with next packages..."
+			else
+				error "Skipping upgrade of '$package'."
+			fi
 		fi
 	else
 		warning "Installing '$package'..."

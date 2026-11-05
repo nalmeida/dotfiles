@@ -19,7 +19,7 @@ display_help() {
 	echo "  -f, --force          Force install/upgrade all apps without prompting"
 	echo "  -s, --skip-installed Skip already installed apps"
 	echo
-	echo "Without any options, the script will prompt you to upgrade apps that are already installed."
+	echo "Without any options, the script asks before upgrading each installed app (y/n for one, Y/N for all)."
 	exit 0
 }
 
@@ -55,7 +55,6 @@ apps=(
 	vivaldi
 	visual-studio-code
 	rectangle
-	ghostty
 	imageoptim
 	localsend
 	espanso
@@ -80,7 +79,6 @@ app_paths=(
 	"/Applications/Vivaldi.app"
 	"/Applications/Visual Studio Code.app"
 	"/Applications/Rectangle.app"
-	"/Applications/Ghostty.app"
 	"/Applications/ImageOptim.app"
 	"/Applications/LocalSend.app"
 	"/Applications/Espanso.app"
@@ -116,17 +114,13 @@ for i in {1..${#apps}}; do
 		elif $SKIP_INSTALLED; then
 			error "Skip installed option detected. Skipping '$app'..."
 		else
-			read "choice?Do you want to attempt to upgrade '$app'? (y/n): "
-			case "$choice" in
-				y|Y|yes|Yes|YES)
-					echo "Attempting to upgrade '$app'..."
-					brew uninstall --cask "$app" --force &>/dev/null || true
-					brew install --cask "$app" || echo "Error upgrading '$app', continuing with next apps..."
-					;;
-				*)
-					error "Skipping upgrade of '$app'."
-					;;
-			esac
+			if confirm_all "Do you want to attempt to upgrade '$app'?"; then
+				echo "Attempting to upgrade '$app'..."
+				brew uninstall --cask "$app" --force &>/dev/null || true
+				brew install --cask "$app" || echo "Error upgrading '$app', continuing with next apps..."
+			else
+				error "Skipping upgrade of '$app'."
+			fi
 		fi
 	# As a backup, also check if brew thinks it's installed
 	elif brew list --cask "$app" &>/dev/null; then
@@ -138,16 +132,12 @@ for i in {1..${#apps}}; do
 		elif $SKIP_INSTALLED; then
 			error "Skip installed option detected. Skipping '$app'..."
 		else
-			read "choice?Do you want to upgrade '$app'? (y/n): "
-			case "$choice" in
-				y|Y|yes|Yes|YES)
-					echo "Upgrading '$app'..."
-					brew upgrade --cask "$app" || echo "Error upgrading '$app', continuing with next apps..."
-					;;
-				*)
-					error "Skipping upgrade of '$app'."
-					;;
-			esac
+			if confirm_all "Do you want to upgrade '$app'?"; then
+				echo "Upgrading '$app'..."
+				brew upgrade --cask "$app" || echo "Error upgrading '$app', continuing with next apps..."
+			else
+				error "Skipping upgrade of '$app'."
+			fi
 		fi
 	else
 		echo "Installing '$app'..."

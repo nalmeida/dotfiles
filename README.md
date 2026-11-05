@@ -226,6 +226,25 @@ After installing applications, set up symlinks to use your dotfiles configuratio
 
 This script will create symbolic links from your dotfiles repository to your home directory, ensuring all your configuration files are properly set up.
 
+### ZSH (not symlinked)
+
+`~/.zshrc` and `~/.zprofile` stay as local files, because other tools (e.g. the corporate Zscaler certificate script) write machine-specific settings into them that must not be committed. Instead, they source the versioned files:
+
+```bash
+echo 'source "$HOME/github.com/nalmeida/dotfiles/config/zsh/.zprofile"' >> ~/.zprofile
+echo 'source "$HOME/github.com/nalmeida/dotfiles/config/zsh/.zshrc"' >> ~/.zshrc
+```
+
+For icons (Starship, `eza --icons`) in macOS Terminal, set the profile font to "FiraMono Nerd Font Mono" (Terminal > Settings > Profiles > Text).
+
+### Git (not versioned)
+
+`~/.gitconfig` is also a local file: name, email and corporate settings live only there, and authentication is handled by `gh auth login`. The only thing to wire up is the global ignore file (symlinked by `symlinks.sh`):
+
+```bash
+git config --global core.excludesfile '~/.gitignore_global'
+```
+
 ## Optional install and configuration
 
 ### Wallpapers
@@ -247,7 +266,7 @@ This script will create symbolic links from your dotfiles repository to your hom
 ### What's In This Repository
 
 - `.zshrc`: ZSH shell configuration
-- `.gitconfig`: Git configuration
+- `git/gitignore_global`: global Git ignore rules (identity and credentials stay local; `gh auth login` handles auth)
 - `scripts/`: Installation and setup scripts
   - `install-brew.sh`: Installs CLI tools via Homebrew
   - `install-brew-cask.sh`: Installs GUI applications via Homebrew Cask
