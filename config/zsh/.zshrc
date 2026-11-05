@@ -11,3 +11,6 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # zsh-syntax-highlighting ----------------------------------
 # https://github.com/zsh-users/zsh-syntax-highlighting
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Claude Code CLI bundled with the Claude desktop app (version-independent)
+C() { "$(ls -d "$HOME/Library/Application Support/Claude/claude-code"/*/*/claude.app/Contents/MacOS/claude | sort -V | tail -1)" "$@"; }
