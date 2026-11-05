@@ -43,6 +43,9 @@ matches:
     replace: "↓"
 
   # ASC II Icons & Symbols
+  - trigger: ">>*"
+    replace: "✳"
+
   - trigger: ":wtf"
     replace: "¯\\_(ツ)_/¯"
 
@@ -160,3 +163,12 @@ matches:
         type: shell
         params:
           cmd: "echo Hello from your shell"
+          
+  - regex: "<<cupom-(?P<num>\\d+);"
+    replace: "{{output}}"
+    vars:
+      - name: "output"
+        type: "shell"
+        params:
+          shell: "bash"
+          cmd: "for i in $(seq 1 {{num}}); do printf 'CUPOM-%d\\n' $i; done"

@@ -62,6 +62,13 @@ apps=(
 	cmux
 	handy
 	pluk-inc/tap/markdown-preview
+	bruno
+	drift
+	excalidrawz
+	keepingyouawake
+	losslesscut
+	rancher
+	there
 )
 
 app_paths=(
@@ -80,6 +87,13 @@ app_paths=(
 	"/Applications/cmux.app"
 	"/Applications/Handy.app"
 	"/Applications/Markdown Preview.app"
+	"/Applications/Bruno.app"
+	"/Applications/Drift.app"
+	"/Applications/ExcalidrawZ.app"
+	"/Applications/KeepingYouAwake.app"
+	"/Applications/LosslessCut.app"
+	"/Applications/Rancher Desktop.app"
+	"/Applications/There.app"
 )
 
 info "Preparing to install: ${apps[@]}"
