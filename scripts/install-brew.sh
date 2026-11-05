@@ -45,20 +45,49 @@ while [[ $# -gt 0 ]]; do
 	esac
 done
 
+# Taps required before some packages below can be installed
+taps=(
+	"hashicorp/tap"
+	"atlassian/acli"
+	"pluk-inc/tap"
+	"nalmeida/urltracker"
+)
+
+for tap in "${taps[@]}"; do
+	info "==> Tapping $tap"
+	brew tap "$tap" || echo "Error tapping '$tap', continuing..."
+done
+
 # Define packages explicitly in array
 packages=(
-	"mas" 
-	"starship" 
-	"git" 
-	"wget" 
-	"bat" 
-	"eza" 
-	"go" 
-	"tree" 
+	"mas"
+	"starship"
+	"git"
+	"wget"
+	"bat"
+	"eza"
+	"go"
+	"tree"
 	# "httpx" use the Go installer: https://github.com/projectdiscovery/httpx
-	"zsh-autosuggestions" 
+	"zsh-autosuggestions"
 	"zsh-syntax-highlighting"
 	"gawk"
+	"awscli"
+	"coreutils"
+	"exiftool"
+	"ffmpeg"
+	"flyctl"
+	"gh"
+	"git-quick-stats"
+	"nmap"
+	"pyenv"
+	"pyenv-virtualenv"
+	"hashicorp/tap/vault"
+	"atlassian/acli/acli"
+	"bats-core"
+	"gum"
+	"source-highlight"
+	"vhs"
 )
 
 # Print all packages that will be processed
