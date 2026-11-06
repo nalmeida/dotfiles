@@ -44,17 +44,14 @@ eval $(/opt/homebrew/bin/brew shellenv)
 # Install gh via homebrew
 brew install gh
 
-# Login 
-gh auth login
+# Login via browser, using HTTPS as the Git protocol
+gh auth login --git-protocol https
 
-# Create a folder for GitHub related projects
-mkdir ~/github.com
-
-# Create a folder with your GitHub username
-mkdir ~/github.com/nalmeida
+# Create a folder for GitHub related projects, with your GitHub username
+mkdir -p ~/github.com/nalmeida
 
 # Clone the dotfiles repo
-git clone git@github.com:nalmeida/dotfiles.git ~/github.com/nalmeida/dotfiles
+gh repo clone nalmeida/dotfiles ~/github.com/nalmeida/dotfiles
 ```
 
 ## MacOS Configuration
@@ -73,7 +70,7 @@ git clone git@github.com:nalmeida/dotfiles.git ~/github.com/nalmeida/dotfiles
 
 ### Clock Display
 
-- System Settings > Control Center, then find "Clock" and uncheck "Show the day of the week".
+- System Settings > search for "Clock" > Menu Bar > Clock, then disable "Show the day of the week".
 
 ### Do not Disturb
 
@@ -181,8 +178,7 @@ mas install 497799835  # Xcode
 
 - Install FiraMono Nerd Font (used by both VS Code and Ghostty):
   ```bash
-  # Install via Homebrew
-  brew tap homebrew/cask-fonts
+  # Install via Homebrew (fonts live in the main cask repo, no tap needed)
   brew install --cask font-fira-mono-nerd-font
   ```
   

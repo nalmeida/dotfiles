@@ -68,6 +68,7 @@ apps=(
 	losslesscut
 	rancher
 	there
+	openlogi
 )
 
 app_paths=(
@@ -92,6 +93,7 @@ app_paths=(
 	"/Applications/LosslessCut.app"
 	"/Applications/Rancher Desktop.app"
 	"/Applications/There.app"
+	"/Applications/OpenLogi.app"
 )
 
 info "Preparing to install: ${apps[@]}"
