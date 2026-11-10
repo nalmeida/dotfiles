@@ -80,6 +80,7 @@ packages=(
 	"gh"
 	"git-quick-stats"
 	"nmap"
+	"fnm"
 	"pyenv"
 	"pyenv-virtualenv"
 	"hashicorp/tap/vault"

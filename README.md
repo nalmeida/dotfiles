@@ -203,10 +203,11 @@ mas install 497799835  # Xcode
 ### Development Tools
 
 - Git: The `install-brew.sh` script should install this
-- NVM (Node Version Manager):
-  - Follow the [official NVM installation instructions](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating)
+- [fnm](https://github.com/Schniz/fnm) (Fast Node Manager): the `install-brew.sh` script should install this
+  - Install the latest LTS and make it the default: `fnm install --lts && fnm default lts-latest`
+  - Reads `.nvmrc` / `.node-version` and switches version automatically on `cd`
 - Python (see [detailed Python setup guide](upnote://x-callback-url/openNote?noteId=41cf9f45-2c4d-4182-bf68-9d1fe21b57fc))
-- NPM global packages (after NVM/Node is installed):
+- NPM global packages (after Node is installed via fnm; they are per Node version, so reinstall after installing a new version):
   ```bash
   npm install -g yarn yalc @googleworkspace/cli
   ```
