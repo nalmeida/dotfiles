@@ -102,6 +102,11 @@ The scripts `install-brew-cask.sh` and `install-brew.sh` will install most appli
   - Disable Global Media Controls:
     1. Open Vivaldi and navigate to `vivaldi://flags/#global-media-controls`
     2. Find "Global media controls" and set to "Disabled"
+  - Disable Media Key Control (stop Vivaldi from taking over the play/pause media keys):
+    1. Open Vivaldi and navigate to `vivaldi://flags`
+    2. In the search box, type "Hardware Media Key Handling"
+    3. Find the "Hardware Media Key Handling" flag and set it from "Default" to "Disabled"
+    4. Relaunch Vivaldi to apply the change
 
 #### Productivity & Utilities
 - Visual Studio Code:
